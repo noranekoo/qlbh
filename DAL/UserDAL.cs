@@ -13,18 +13,43 @@ namespace DAL
         {
             
         }
-
-        public bool IsExistUser(User user)
+        public static bool IsExistUser(User user)
         {
-            string sql = DataProvider.JoinSQL(Const.GET_USER, "WHERE TenDangNhap=@user AND MatKhau=@pass");
-            OleDbParameter [] param = 
+            try
+            {
+                OleDbParameter[] param =
+                {
+                    new OleDbParameter("user", user.UserName),
+                };
+                DataTable dt = DataProvider.GetInstance().SelectData("NguoiDung", param,"*", "TenDangNhap=@user");
+                int count = dt.Rows.Count;
+                if (count > 0)
+                {
+                    string pwd = dt.Rows[0]["MatKhau"].ToString();
+                    return Encrypto.SHACheck(user.Password, pwd);
+                }
+            }
+            catch(Exception e)
+            {
+                throw e.InnerException;
+            }
+
+            return false;
+        }
+
+        public static int AddUser(User user)
+        {
+            if (IsExistUser(user))
+            {
+                return -1;
+            }
+            string pwd = Encrypto.SHAHash(user.Password);
+            OleDbParameter[] param =
             {
                 new OleDbParameter("user", user.UserName),
-                new OleDbParameter("pass", user.Password),
+                new OleDbParameter("pass", pwd),
             };
-            DataTable dt = DataProvider.GetInstance().GetData(sql, param);
-            int count = dt.Rows.Count;
-            return count > 0;
+            return DataProvider.GetInstance().UpdateData("NguoiDung", param, "C", "TenDangNhap,MatKhau");
         }
     }
 }

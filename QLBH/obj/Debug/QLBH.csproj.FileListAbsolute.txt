@@ -11,3 +11,9 @@ E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\QLBH.exe.config
 E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\ATcrypto.dll
 E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\ATcrypto.pdb
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.csproj.CopyComplete
+E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\BUS.dll
+E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\BUS.pdb
+E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\DTO.dll
+E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\DAL.dll
+E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\DTO.pdb
+E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\DAL.pdb
