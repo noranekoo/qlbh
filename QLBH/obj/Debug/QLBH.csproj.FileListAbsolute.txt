@@ -1,15 +1,12 @@
 E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\QLBH.exe
 E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\QLBH.pdb
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.csproj.AssemblyReference.cache
-E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Form1.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Properties.Resources.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.csproj.GenerateResource.cache
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.csproj.CoreCompileInputs.cache
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.exe
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.pdb
 E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\QLBH.exe.config
-E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\ATcrypto.dll
-E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\ATcrypto.pdb
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.csproj.CopyComplete
 E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\BUS.dll
 E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\BUS.pdb
@@ -17,3 +14,7 @@ E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\DTO.dll
 E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\DAL.dll
 E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\DTO.pdb
 E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\DAL.pdb
+E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.frmLogin.resources
+E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.frmMain.resources
+E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Resources.MessageCustom.resources
+E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Resources.TabButtonCustom.resources

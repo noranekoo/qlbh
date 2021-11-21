@@ -1,0 +1,5 @@
+E:\DEVDIR\C#\QLBH\DTO\bin\x86\Release\DTO.dll
+E:\DEVDIR\C#\QLBH\DTO\bin\x86\Release\DTO.pdb
+E:\DEVDIR\C#\QLBH\DTO\obj\x86\Release\DTO.csproj.CoreCompileInputs.cache
+E:\DEVDIR\C#\QLBH\DTO\obj\x86\Release\DTO.dll
+E:\DEVDIR\C#\QLBH\DTO\obj\x86\Release\DTO.pdb

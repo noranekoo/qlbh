@@ -1,6 +1,5 @@
 E:\DEVDIR\C#\QLBH\DTO\bin\Debug\DTO.dll
 E:\DEVDIR\C#\QLBH\DTO\bin\Debug\DTO.pdb
-E:\DEVDIR\C#\QLBH\DTO\obj\Debug\DTO.csproj.AssemblyReference.cache
 E:\DEVDIR\C#\QLBH\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 E:\DEVDIR\C#\QLBH\DTO\obj\Debug\DTO.dll
 E:\DEVDIR\C#\QLBH\DTO\obj\Debug\DTO.pdb

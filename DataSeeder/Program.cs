@@ -2,30 +2,43 @@
 using System.Text;
 using DTO;
 using DAL;
+using System.IO;
+
 namespace DataSeeder
 {
     class Program
     {
+        static string PATH = "device_key";
         static void Main(string[] args)
         {
             Console.WriteLine("---------------------------USER SEEDER---------------------------");
+            if (File.Exists(PATH))
+            {
+                string cntent = File.ReadAllText(PATH);
+                Console.WriteLine(cntent);
+            }
+            else
+            {
+                string key = Encrypto.SHAHash(GenerateKey());
+                File.WriteAllText("device_key", $"key={key}");
+            }
             int result = 0;
             bool isSuccess = false;
-            do
-            {
-                Console.Write("Nhap so luong tai khoan can tao: ");
-                string accNum = Console.ReadLine();
-                isSuccess = int.TryParse(accNum, out result);
-            } while (!isSuccess);
-            Console.Write("Nhap mat khau mac dinh: ");
-            string pwd = Console.ReadLine();
-            for(int i = 0; i < result; i++)
-            {
-                string usname = GenerateTextString(10);
-                User user = new User(usname, pwd);
-                UserDAL.AddUser(user)
-            }
-            Console.WriteLine($"Mat khau mac dinh la: {pwd}");
+            //do
+            //{
+            //    Console.Write("Nhap so luong tai khoan can tao: ");
+            //    string accNum = Console.ReadLine();
+            //    isSuccess = int.TryParse(accNum, out result);
+            //} while (!isSuccess);
+            //Console.Write("Nhap mat khau mac dinh: ");
+            //string pwd = Console.ReadLine();
+            //for(int i = 0; i < result; i++)
+            //{
+            //    string usname = GenerateTextString(10);
+            //    User user = new User(usname, pwd);
+            //    UserDAL.AddUser(user);
+            //}
+            //Console.WriteLine($"Mat khau mac dinh la: {pwd}");
             Console.ReadKey();
         }
 
@@ -44,7 +57,8 @@ namespace DataSeeder
 
         static string GenerateKey()
         {
-            return "xxxxxxxxxxxxxxxxxxxxx";
+            return Guid.NewGuid().ToString();
+            //return "xxxxxxxxxxxxxxxxxxxxx";
         }
     }
 }

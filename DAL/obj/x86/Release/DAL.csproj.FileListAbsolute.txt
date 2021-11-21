@@ -1,0 +1,9 @@
+E:\DEVDIR\C#\QLBH\DAL\bin\x86\Release\DAL.dll
+E:\DEVDIR\C#\QLBH\DAL\bin\x86\Release\DAL.pdb
+E:\DEVDIR\C#\QLBH\DAL\bin\x86\Release\DTO.dll
+E:\DEVDIR\C#\QLBH\DAL\bin\x86\Release\DTO.pdb
+E:\DEVDIR\C#\QLBH\DAL\obj\x86\Release\DAL.csproj.AssemblyReference.cache
+E:\DEVDIR\C#\QLBH\DAL\obj\x86\Release\DAL.csproj.CoreCompileInputs.cache
+E:\DEVDIR\C#\QLBH\DAL\obj\x86\Release\DAL.csproj.CopyComplete
+E:\DEVDIR\C#\QLBH\DAL\obj\x86\Release\DAL.dll
+E:\DEVDIR\C#\QLBH\DAL\obj\x86\Release\DAL.pdb

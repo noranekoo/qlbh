@@ -59,5 +59,84 @@ namespace QLBH.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap close_clicked {
+            get {
+                object obj = ResourceManager.GetObject("close_clicked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap close_unclick {
+            get {
+                object obj = ResourceManager.GetObject("close_unclick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap login_clicked {
+            get {
+                object obj = ResourceManager.GetObject("login_clicked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap login_unclick {
+            get {
+                object obj = ResourceManager.GetObject("login_unclick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap logout_clicked {
+            get {
+                object obj = ResourceManager.GetObject("logout_clicked", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap logout_unclick {
+            get {
+                object obj = ResourceManager.GetObject("logout_unclick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap power {
+            get {
+                object obj = ResourceManager.GetObject("power", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   QLBH.Properties.Resources に類似しているローカライズされた文字列を検索します。
+        /// </summary>
+        internal static string String {
+            get {
+                return ResourceManager.GetString("String", resourceCulture);
+            }
+        }
     }
 }

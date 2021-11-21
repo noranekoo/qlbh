@@ -9,3 +9,4 @@ E:\DEVDIR\C#\QLBH\DataSeeder\obj\Debug\DataSeeder.csproj.CoreCompileInputs.cache
 E:\DEVDIR\C#\QLBH\DataSeeder\obj\Debug\DataSeeder.csproj.CopyComplete
 E:\DEVDIR\C#\QLBH\DataSeeder\obj\Debug\DataSeeder.exe
 E:\DEVDIR\C#\QLBH\DataSeeder\obj\Debug\DataSeeder.pdb
+E:\DEVDIR\C#\QLBH\DataSeeder\bin\Debug\DataSeeder.exe.config

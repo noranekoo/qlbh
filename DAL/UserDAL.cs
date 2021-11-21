@@ -13,6 +13,11 @@ namespace DAL
         {
             
         }
+        /// <summary>
+        /// Kiểm tra sự tồn tại của người dùng
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public static bool IsExistUser(User user)
         {
             try
@@ -36,7 +41,11 @@ namespace DAL
 
             return false;
         }
-
+        /// <summary>
+        /// Thêm người dùng mới
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
         public static int AddUser(User user)
         {
             if (IsExistUser(user))
