@@ -46,6 +46,7 @@
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Thêm";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
@@ -55,6 +56,7 @@
             this.btnEdit.TabIndex = 0;
             this.btnEdit.Text = "Sửa";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnDelete
             // 
@@ -64,6 +66,7 @@
             this.btnDelete.TabIndex = 0;
             this.btnDelete.Text = "Xoá";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnPrint
             // 
@@ -73,6 +76,7 @@
             this.btnPrint.TabIndex = 0;
             this.btnPrint.Text = "In";
             this.btnPrint.UseVisualStyleBackColor = true;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // btnExcelExport
             // 
@@ -82,6 +86,7 @@
             this.btnExcelExport.TabIndex = 0;
             this.btnExcelExport.Text = "Xuất Excel";
             this.btnExcelExport.UseVisualStyleBackColor = true;
+            this.btnExcelExport.Click += new System.EventHandler(this.btnExcelExport_Click);
             // 
             // flowLayoutPanel1
             // 

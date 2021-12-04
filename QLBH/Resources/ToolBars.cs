@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -13,46 +14,81 @@ namespace QLBH.Resources
         [Category("Button 1"),Description("Không có mô tả"), DisplayName("Text")]
         public string TextT1
         {
-            get => TextT1 ?? string.Empty;
-            set { TextT1 = value; btnAdd.Text = value; }
+            get => btnAdd.Text;
+            set { btnAdd.Text = value; }
         }
         [Category("Button 2"), Description("Không có mô tả"), DisplayName("Text")]
         public string TextT2
         {
-            get => TextT2 ?? string.Empty; 
-            set { TextT2 = value; btnEdit.Text = value; }
+            get => btnEdit.Text; 
+            set { btnEdit.Text = value; }
         }
         [Category("Button 3"), Description("Không có mô tả"), DisplayName("Text")]
         public string TextT3
         {
-            get => TextT3 ?? string.Empty; 
-            set { TextT3 = value; btnDelete.Text = value; }
+            get => btnDelete.Text; 
+            set { btnDelete.Text = value; }
         }
         [Category("Button 4"), Description("Không có mô tả"), DisplayName("Text")]
         public string TextT4
         {
-            get => TextT4 ?? string.Empty; 
-            set { TextT4 = value; btnPrint.Text = value; }
+            get => btnPrint.Text; 
+            set { btnPrint.Text = value; }
         }
         [Category("Button 5"), Description("Không có mô tả"), DisplayName("Text")]
         public string TextT5
         {
-            get => TextT5 ?? string.Empty; 
-            set { TextT5 = value; btnExcelExport.Text = value; }
+           get => btnExcelExport.Text; 
+            set { btnExcelExport.Text = value; }
         }
         /// <summary>
         /// Button Background
         /// </summary>
         [Category("Button 1"), Description("Không có mô tả"), DisplayName("Background Color")]
-        public Color BColorT1 { get; set; }
+        public Color BColorT1
+        {
+            get => btnAdd.BackColor;
+            set
+            {
+                btnAdd.BackColor = value;
+            }
+        }
         [Category("Button 2"), Description("Không có mô tả"), DisplayName("Background Color")]
-        public Color BColorT2 { get; set; }
+        public Color BColorT2
+        {
+            get => btnEdit.BackColor;
+            set
+            {
+                btnEdit.BackColor = value;
+            }
+        }
         [Category("Button 3"), Description("Không có mô tả"), DisplayName("Background Color")]
-        public Color BColorT3 { get; set; }
+        public Color BColorT3
+        {
+            get => btnDelete.BackColor;
+            set
+            {
+                btnDelete.BackColor = value;
+            }
+        }
         [Category("Button 4"), Description("Không có mô tả"), DisplayName("Background Color")]
-        public Color BColorT4 { get; set; }
+        public Color BColorT4 
+        {
+            get => btnPrint.BackColor;
+            set
+            {
+                btnPrint.BackColor = value;
+            }
+        }
         [Category("Button 5"), Description("Không có mô tả"), DisplayName("Background Color")]
-        public Color BColorT5 { get; set; }
+        public Color BColorT5
+        {
+            get => btnExcelExport.BackColor;
+            set
+            {
+                btnExcelExport.BackColor = value;
+            }
+        }
         /// <summary>
         /// Button Foreground
         /// </summary>
@@ -94,27 +130,53 @@ namespace QLBH.Resources
         public Image ImageT5 { get; set; }
         #endregion
 
+        #region Events
+        private EventHandler buttonClick;
+        /// <summary>
+        /// Xử lý sự kiện
+        /// </summary>
+        [Description("Không có mô tả"), DisplayName("ItemClick")]
+        public event EventHandler FClick
+        {
+            add
+            {
+                buttonClick += value;
+            }
+            remove
+            {
+                buttonClick -= value;
+            }
+        }
+        #endregion
+
         public ToolBars()
         {
             InitializeComponent();
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            base.OnPaint(e);
-            
-            SetButtonStyles();
-            SetButtonText();
+            buttonClick(sender, e);
         }
 
-        void SetButtonText()
+        private void btnEdit_Click(object sender, EventArgs e)
         {
-
+            buttonClick(sender, e);
         }
 
-        void SetButtonStyles()
+        private void btnDelete_Click(object sender, EventArgs e)
         {
+            buttonClick(sender, e);
+        }
 
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            buttonClick(sender, e);
+        }
+
+        private void btnExcelExport_Click(object sender, EventArgs e)
+        {
+            buttonClick(sender, e);
         }
     }
 }
