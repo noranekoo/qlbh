@@ -20,6 +20,7 @@ namespace QLBH.Resources
         }
 
         public static UserInfo UserInfo = null;
+        public static Form frmLogin = new frmLogin();
         public static void ShowMessage(string message, string title, MessageIcon icon, Form owner = null)
         {
             MessageCustom mc = new MessageCustom() { Message = message, MessageTitle = title, MessageIcon = icon };

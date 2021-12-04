@@ -142,6 +142,7 @@ namespace QLBH
             this.ckbSaveSession.TabIndex = 12;
             this.ckbSaveSession.Text = "Lưu đăng nhập";
             this.ckbSaveSession.UseVisualStyleBackColor = true;
+            this.ckbSaveSession.CheckedChanged += new System.EventHandler(this.ckbSaveSession_CheckedChanged);
             // 
             // label2
             // 
@@ -150,9 +151,9 @@ namespace QLBH
             this.label2.ForeColor = System.Drawing.Color.Crimson;
             this.label2.Location = new System.Drawing.Point(190, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(161, 37);
+            this.label2.Size = new System.Drawing.Size(163, 37);
             this.label2.TabIndex = 7;
-            this.label2.Text = "BÁN HÀNG";
+            this.label2.Text = "KHO HÀNG";
             // 
             // frmLogin
             // 

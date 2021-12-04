@@ -21,11 +21,12 @@ namespace QLBH
             InitializeComponent();
             _user = $"{SystemInformation.UserDomainName}\\{SystemInformation.UserName}";
             lblUser.Text = _user;
+            FormHandler.frmLogin = this;
         }
 
         private void lblUser_MouseHover(object sender, EventArgs e)
         {
-
+            
         }
 
         private void lblUser_Paint(object sender, PaintEventArgs e)
@@ -42,13 +43,11 @@ namespace QLBH
                 if (UserBUS.IsExistUser(user))
                 {
                     Hide();
-                    FormHandler.UserInfo = new UserInfo()
-                    {
-                        Info = user,
-                        FullName = SystemInformation.UserName
-                    };
+                    FormHandler.UserInfo = UserBUS.GetUser(user);
+                    FormHandler.UserInfo.FullName = !string.IsNullOrEmpty(FormHandler.UserInfo.FullName) ? FormHandler.UserInfo.FullName : SystemInformation.UserName;
                     frmMain main = new frmMain();
                     main.Show();
+                    txtPassword.Clear();
                 }
                 else
                 {
@@ -79,6 +78,11 @@ namespace QLBH
                 btnLogin_Click(sender, e);
             }
             
+        }
+
+        private void ckbSaveSession_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

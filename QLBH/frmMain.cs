@@ -1,55 +1,336 @@
-﻿using QLBH.Resources;
+﻿using QLBH.Pages;
+using QLBH.Resources;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace QLBH
 {
     public partial class frmMain : Form
     {
-        Dictionary<string, Image> images = new Dictionary<string, Image>()
-        {
-            //{"logout_unclick", Image.FromFile("images\\logout_unclick.png") },
-            //{"logout_clicked", Image.FromFile("images\\logout_clicked.png") },
-        };
+
+        private List<Button> navs = null;
+        private List<TabButtonCustom> tabButtons = null;
+        private Dictionary<int, TabPage> tpList = null;
+
+        private int tabIndex = 0;
+
+        private bool isReadyMove = false;
+        private bool isToggleBar = false;
+
+        private const int LBAR_MAX_WIDTH = 160;
+        private const int LBAR_MIN_WIDTH = 35;
+        private const int cGrip = 16;      // Grip size
+        private const int cCaption = 32;   // Caption bar height;
+
+        private Point mPt;
         public frmMain()
         {
             InitializeComponent();
+            navs = new List<Button>
+            {
+                btnGeneral,
+                btnCelebration,
+                btnCooperation,
+                btnGoods
+            };
+            DoubleBuffered = true;
+            SetStyle(ControlStyles.ResizeRedraw, true);
+            tpList = new Dictionary<int, TabPage>();
+            tabButtons = new List<TabButtonCustom>();
+            lblFullName.Text = FormHandler.UserInfo.FullName;
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            Rectangle rc = new Rectangle(this.ClientSize.Width - cGrip, this.ClientSize.Height - cGrip, cGrip, cGrip);
+            ControlPaint.DrawSizeGrip(e.Graphics, this.BackColor, rc);
+            rc = new Rectangle(0, 0, this.ClientSize.Width, cCaption);
+            e.Graphics.FillRectangle(Brushes.DarkBlue, rc);
+        }
+
+        protected override void WndProc(ref Message m)
+        {
+            if (m.Msg == 0x84)
+            {  // Trap WM_NCHITTEST
+                Point pos = new Point(m.LParam.ToInt32());
+                pos = PointToClient(pos);
+                if (pos.Y < cCaption)
+                {
+                    m.Result = (IntPtr)2;  // HTCAPTION
+                    return;
+                }
+                if (pos.X >= ClientSize.Width - cGrip && pos.Y >= ClientSize.Height - cGrip)
+                {
+                    m.Result = (IntPtr)17; // HTBOTTOMRIGHT
+                    return;
+                }
+            }
+            base.WndProc(ref m);
         }
 
         private void frmMain_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //FormHandler.ShowMessage();
-        }
         
         private void frmMain_Load(object sender, EventArgs e)
         {
-            lblFullName.Text = FormHandler.UserInfo.FullName;
+
+        }
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            isReadyMove = true;
+            mPt = new Point(e.X, e.Y);
         }
 
-        private void btnLogout_MouseEnter(object sender, EventArgs e)
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
-            ///FormHandler.ControlImageChange(btnLogout, images["logout_clicked"]);
+            if (isReadyMove)
+            {
+                Point p = PointToScreen(e.Location);
+                Location = new Point(p.X - mPt.X, p.Y - mPt.Y);
+            }
+            
         }
 
-        private void btnLogout_MouseLeave(object sender, EventArgs e)
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
         {
-            //FormHandler.ControlImageChange(btnLogout, images["logout_unclick"]);
+            isReadyMove = false;
         }
 
-        private void tabControl1_DrawItem(object sender, DrawItemEventArgs e)
+        private void btnClose_Click(object sender, EventArgs e)
         {
+            Application.Exit();
+        }
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            FormWindowState state = WindowState;
+            if(state == FormWindowState.Normal)
+            {
+                WindowState = FormWindowState.Maximized;
+            }
+            else
+            {
+                WindowState = FormWindowState.Normal;
+            }
+        }
+
+        private void lblFullName_Paint(object sender, PaintEventArgs e)
+        {
+            Point p = new Point(btnLogout.Location.X - lblFullName.Width - 5, lblFullName.Location.Y);
+            lblFullName.Location = p;
+        }
+
+        private void btnSettings_Paint(object sender, PaintEventArgs e)
+        {
+            Point p = new Point(lblFullName.Location.X - btnSettings.Width - 5, btnSettings.Location.Y);
+            btnSettings.Location = p;
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnToggleBar_Click(object sender, EventArgs e)
+        {
+            isToggleBar = !isToggleBar;
+            int width = isToggleBar ? LBAR_MIN_WIDTH : LBAR_MAX_WIDTH;
+            pnlLeftBar.Width = width;
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            frmSettings frm = new frmSettings();
+            frm.ShowDialog(this);
+        }
+
+        private void tabPage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGeneral_Click(object sender, EventArgs e)
+        {
+            tabIndex = 0;
+            frmGeneral frm = new frmGeneral();
+            AddTabPage(tabIndex, "Tổng quan", frm);
+        }
+
+        private void btnCelebration_Click(object sender, EventArgs e)
+        {
+            tabIndex = 1;
+            frmCelebration frm = new frmCelebration();
+            AddTabPage(tabIndex, "Tổ chức", frm);
+        }
+
+        private void btnCooperation_Click(object sender, EventArgs e)
+        {
+            tabIndex = 2;
+            frmCooperation frm = new frmCooperation();
+            AddTabPage(tabIndex, "Đối tác", frm);
+        }
+
+        private void btnGoods_Click(object sender, EventArgs e)
+        {
+            tabIndex = 3;
+            frmGoods frm = new frmGoods();
+            AddTabPage(tabIndex, "Hàng hoá", frm);
+        }
+        private void btnReport_Click(object sender, EventArgs e)
+        {
+            tabIndex = 4;
+            frmReport frm = new frmReport();
+            AddTabPage(tabIndex, "Báo cáo", frm);
+        }
+        private void btnGoodsIE_Click(object sender, EventArgs e)
+        {
+            tabIndex = 5;
+            frmGoodsIE frm = new frmGoodsIE();
+            AddTabPage(tabIndex, "Nhập-xuất hàng", frm);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="title"></param>
+        /// <param name="frm"></param>
+        private void AddTabPage(int key, string title, Form frm)
+        {
+            if (IsTabExist(tabIndex))
+            {
+                MessageBox.Show("Hiện có một tab tương tự đang được mở", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                tabPage.SelectedTab = (TabPage)tpList[tabIndex];
+                TabSelectedIndexChanged();
+                return;
+            }
+            TabPage tp = new TabPage(title);
+            frm.TopLevel = false;
+            tp.Controls.Add(frm);
+            tabPage.TabPages.Add(tp);
+            frm.Dock= DockStyle.Fill;
+            frm.Show();
+            tpList.Add(key, tp);
+            DrawTabPage();
+            tabPage.SelectedTab = tp;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        void DrawTabPage()
+        {
+            flowTool.Controls.Clear();
+            TabButtonCustom oldTab = new TabButtonCustom()
+            {
+                Location = new Point(5, 8),
+                Size = new Size(0,0)
+            };
+            foreach (int s in tpList.Keys)
+            {
+                TabButtonCustom tab = new TabButtonCustom()
+                {
+                    TitleText = tpList[s].Text,
+                    Index = s,
+                    Tag = tpList[s],
+                    ActiveBkColor = Color.White,
+                    DeactiveBkColor = Color.Black,
+                    ActiveFColor = Color.Black,
+                    DeactiveFColor = Color.White,
+                    IsActived = tabIndex == s ? true : false
+                };
+                tab.CloseClick += Tab_CloseClick;
+                tab.Clicked += Tab_Clicked;
+                flowTool.Controls.Add(tab);
+                tabButtons.Add(tab);
+                oldTab = tab;
+            }            
+        }
+
+        private void Tab_Clicked(object sender, EventArgs e)
+        {
+            TabButtonCustom tbtn = sender as TabButtonCustom;
+            tabIndex = tbtn.Index;
+            TabPage tp = tbtn.Tag is TabPage ? (TabPage)tbtn.Tag : null;
+            if(tp != null)
+            {
+                tabPage.SelectedTab = tp;
+            }
+            TabSelectedIndexChanged();
+        }
+
+        private void Tab_CloseClick(object sender, EventArgs e)
+        {
+            TabButtonCustom btn = sender as TabButtonCustom;
+            RemoveTabPage((TabPage)btn.Tag, btn);
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tp"></param>
+        /// <param name="tbc"></param>
+        private void RemoveTabPage(TabPage tp, TabButtonCustom tbc)
+        {
+            tabPage.TabPages.Remove(tp);
+            flowTool.Controls.Remove(tbc);
+            tabButtons.Remove(tbc);
+            tpList.Remove(tbc.Index);
+            DrawTabPage();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        private bool IsTabExist(int index)
+        {
+            return tpList.ContainsKey(index);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void TabSelectedIndexChanged()
+        {
+            for(int i = 0; i < tabButtons.Count; i++)
+            {
+                if(tabButtons[i].Index == tabIndex)
+                {
+                    tabButtons[i].IsActived = true;
+                }
+                else
+                {
+                    tabButtons[i].IsActived = false;
+                }
+            }
+        }
+
+        private void btnBackup_Paint(object sender, PaintEventArgs e)
+        {
+            Point p = new Point(btnSettings.Location.X - this.btnBackup.Width - 5, btnBackup.Location.Y);
+            btnBackup.Location = p;
+        }
+
+        private void btnBackup_Click(object sender, EventArgs e)
+        {
+            frmBackupData frm = new frmBackupData();
+            frm.ShowDialog(this);
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if(result == DialogResult.OK)
+            {
+                Dispose();
+                FormHandler.frmLogin.Show();
+            }
             
         }
     }

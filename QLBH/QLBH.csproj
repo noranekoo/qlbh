@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>QLBH</RootNamespace>
     <AssemblyName>QLBH</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -103,6 +103,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\frmBackupData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\frmBackupData.Designer.cs">
+      <DependentUpon>frmBackupData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\frmCelebration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\frmCelebration.Designer.cs">
+      <DependentUpon>frmCelebration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\frmCooperation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\frmCooperation.Designer.cs">
+      <DependentUpon>frmCooperation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\frmGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\frmGeneral.Designer.cs">
+      <DependentUpon>frmGeneral.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +139,30 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\frmGoods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\frmGoods.Designer.cs">
+      <DependentUpon>frmGoods.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\frmGoodsIE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\frmGoodsIE.Designer.cs">
+      <DependentUpon>frmGoodsIE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\frmReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\frmReport.Designer.cs">
+      <DependentUpon>frmReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Parameter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -123,6 +171,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\ButtonCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Resources\Const.cs" />
     <Compile Include="Resources\FormHandler.cs" />
     <Compile Include="Resources\MessageCustom.cs">
       <SubType>Form</SubType>
@@ -139,11 +191,41 @@
     <Compile Include="Resources\TabControlCustom.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Resources\ToolBars.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Resources\ToolBars.Designer.cs">
+      <DependentUpon>ToolBars.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Pages\frmBackupData.resx">
+      <DependentUpon>frmBackupData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\frmCelebration.resx">
+      <DependentUpon>frmCelebration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\frmCooperation.resx">
+      <DependentUpon>frmCooperation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\frmGeneral.resx">
+      <DependentUpon>frmGeneral.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSettings.resx">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\frmGoods.resx">
+      <DependentUpon>frmGoods.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\frmGoodsIE.resx">
+      <DependentUpon>frmGoodsIE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\frmReport.resx">
+      <DependentUpon>frmReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -155,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\TabButtonCustom.resx">
       <DependentUpon>TabButtonCustom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ToolBars.resx">
+      <DependentUpon>ToolBars.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\app.manifest" />
@@ -191,6 +276,23 @@
     <None Include="bin\Debug\images\logout.png" />
     <None Include="bin\Debug\images\power.png" />
     <None Include="bin\Debug\images\power %281%29.png" />
+    <None Include="bin\Debug\images\logo.png" />
+    <None Include="bin\Debug\images\power-off.png" />
+    <None Include="bin\Debug\images\maximize.png" />
+    <None Include="bin\Debug\images\minimize.png" />
+    <None Include="bin\Debug\images\down-arrow.png" />
+    <None Include="bin\Debug\images\delete-button.png" />
+    <None Include="bin\Debug\images\settings.png" />
+    <None Include="bin\Debug\images\goods.png" />
+    <None Include="bin\Debug\images\admin.png" />
+    <None Include="bin\Debug\images\organization-chart.png" />
+    <None Include="bin\Debug\images\cooperation.png" />
+    <None Include="bin\Debug\images\normal.png" />
+    <None Include="bin\Debug\images\power-on.png" />
+    <None Include="bin\Debug\images\menu.png" />
+    <None Include="bin\Debug\images\data-integration.png" />
+    <None Include="bin\Debug\images\report.png" />
+    <None Include="bin\Debug\images\warehouse.png" />
     <Content Include="qlbh_icon.ico" />
   </ItemGroup>
   <ItemGroup>

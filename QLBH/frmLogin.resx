@@ -165,7 +165,7 @@
         XTesb3QPLh88M+QwdP6m681Lt7xuXbu94vbgcOjwnZHokdE77DtTd1PuvriXeW/h/sYH6AdFD6UeVjxS
         fNTws+7PbaOWo6fHXMf6Hwc/vj/OGn/2S8Yv7ycKnpCfVEyqTDZPmU2dmnafvvF05dOJZ+nPFmYKf5X+
         tfa5zvMffnP8rX82YnbiBf/Fp99LXsq/PPRq2aueuYC5R69TXy/MF72Rf3P4LeNt37vwd5MLWe+x7ys/
-        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAAuIwAALiMBeKU/dgAAmXlJREFUeF7s3WW8dlXV
+        6H7o/ujz8cGn1E+f/gUDmPP8usTo0wAAAAlwSFlzAAAuIgAALiIBquLdkgAAmXlJREFUeF7s3WW8dlXV
         9v8/3R3SKYiIlIQoIaiIiWKD3YIKKtiB2GCgYncjimKBgIKNQQhISEh3d/P8jwOB+wIOrmvvvda59hrr
         /L34vhnP5/HmmmPPda4x15xj/n//7//9PwAAAAAAMHAxCAAAAAAAhiUGAQAAAADAsMQgAAAAAAAYlhgE
         AAAAAADDEoMAAAAAAGBYYhAAAAAAAAxLDAIAAAAAgGGJQQAAAAAAMCwxCAAAAAAAhiUGAQAAAADAsMQg
@@ -826,7 +826,7 @@
   <data name="btnLogin.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        cQAADnEBRp7WIAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADk1SURBVHhe7d17
+        bwAADm8BqwOKFAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAADk1SURBVHhe7d17
         vFV1nf/xPCCJIlpa6i/GiRxrqpmfptnYT3PQqXQmM6/dHC/Nw8r6TWWNv/w5drNJOiSaaR4QRARFFLko
         KDcVUVNAQDER5S7KVQQE5BzwtubzOW3GxeK9z9nXtdfl9cfz8dDPOXvvdfl+P+8vZ++91nuCIACQcO9p
         ae5uepkjzEnmHHOxucJca4aZ0WaCmWKmmxlmrplvFpsVZq3ZZLaZtwr8v73mP/Pf8d/1x/hj/Tn8ufw5
