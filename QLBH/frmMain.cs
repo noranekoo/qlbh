@@ -10,10 +10,10 @@ namespace QLBH
     public partial class frmMain : Form
     {
 
-        private List<Button> navs = null;
-        private List<TabButtonCustom> tabButtons = null;
-        private Dictionary<int, TabPage> tpList = null;
+        private readonly List<TabButtonCustom> tabButtons = null;
+        private readonly Dictionary<int, TabPage> tpList = null;
 
+        private TabPage welcomeTab;
         private int tabIndex = 0;
 
         private bool isReadyMove = false;
@@ -28,25 +28,25 @@ namespace QLBH
         public frmMain()
         {
             InitializeComponent();
-            navs = new List<Button>
-            {
-                btnGeneral,
-                btnCelebration,
-                btnCooperation,
-                btnGoods
-            };
             DoubleBuffered = true;
             SetStyle(ControlStyles.ResizeRedraw, true);
             tpList = new Dictionary<int, TabPage>();
             tabButtons = new List<TabButtonCustom>();
             lblFullName.Text = FormHandler.UserInfo.FullName;
+            welcomeTab = new TabPage("Welcome");
+            frmWelcome frm = new frmWelcome();
+            frm.TopLevel = false;
+            frm.Dock = DockStyle.Fill;
+            welcomeTab.Controls.Add(frm);
+            frm.Show();
+            tabPage.TabPages.Add(welcomeTab);
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Rectangle rc = new Rectangle(this.ClientSize.Width - cGrip, this.ClientSize.Height - cGrip, cGrip, cGrip);
-            ControlPaint.DrawSizeGrip(e.Graphics, this.BackColor, rc);
-            rc = new Rectangle(0, 0, this.ClientSize.Width, cCaption);
+            Rectangle rc = new Rectangle(ClientSize.Width - cGrip, ClientSize.Height - cGrip, cGrip, cGrip);
+            ControlPaint.DrawSizeGrip(e.Graphics, BackColor, rc);
+            rc = new Rectangle(0, 0, ClientSize.Width, cCaption);
             e.Graphics.FillRectangle(Brushes.DarkBlue, rc);
         }
 
@@ -75,10 +75,6 @@ namespace QLBH
             Application.Exit();
         }
         
-        private void frmMain_Load(object sender, EventArgs e)
-        {
-
-        }
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
             isReadyMove = true;
@@ -92,7 +88,6 @@ namespace QLBH
                 Point p = PointToScreen(e.Location);
                 Location = new Point(p.X - mPt.X, p.Y - mPt.Y);
             }
-            
         }
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
@@ -102,7 +97,12 @@ namespace QLBH
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            //Tắt hoàn toàn chương trình
+            DialogResult dialog = MessageBox.Show(Const.GetMessageByCode("M02"), "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(dialog == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnMaximize_Click(object sender, EventArgs e)
@@ -203,10 +203,14 @@ namespace QLBH
         {
             if (IsTabExist(tabIndex))
             {
-                MessageBox.Show("Hiện có một tab tương tự đang được mở", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(Const.GetMessageByCode("M01"), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 tabPage.SelectedTab = (TabPage)tpList[tabIndex];
                 TabSelectedIndexChanged();
                 return;
+            }
+            if (tabPage.TabPages.Contains(welcomeTab))
+            {
+                tabPage.TabPages.Remove(welcomeTab);
             }
             TabPage tp = new TabPage(title);
             frm.TopLevel = false;
@@ -220,7 +224,7 @@ namespace QLBH
         }
 
         /// <summary>
-        /// 
+        /// Hiển thị các tab đang mở
         /// </summary>
         void DrawTabPage()
         {
@@ -241,7 +245,7 @@ namespace QLBH
                     DeactiveBkColor = Color.Black,
                     ActiveFColor = Color.Black,
                     DeactiveFColor = Color.White,
-                    IsActived = tabIndex == s ? true : false
+                    IsActived = tabIndex == s
                 };
                 tab.CloseClick += Tab_CloseClick;
                 tab.Clicked += Tab_Clicked;
@@ -255,14 +259,18 @@ namespace QLBH
         {
             TabButtonCustom tbtn = sender as TabButtonCustom;
             tabIndex = tbtn.Index;
-            TabPage tp = tbtn.Tag is TabPage ? (TabPage)tbtn.Tag : null;
+            TabPage tp = tbtn.Tag is TabPage page ? page : null;
             if(tp != null)
             {
                 tabPage.SelectedTab = tp;
             }
             TabSelectedIndexChanged();
         }
-
+        /// <summary>
+        /// Đóng một tab
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Tab_CloseClick(object sender, EventArgs e)
         {
             TabButtonCustom btn = sender as TabButtonCustom;
@@ -270,7 +278,7 @@ namespace QLBH
         }
         
         /// <summary>
-        /// 
+        /// Xử lý xoá một tab
         /// </summary>
         /// <param name="tp"></param>
         /// <param name="tbc"></param>
@@ -284,7 +292,7 @@ namespace QLBH
         }
 
         /// <summary>
-        /// 
+        /// Kiểm tra một tab có đang tồn tại
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
@@ -294,7 +302,7 @@ namespace QLBH
         }
 
         /// <summary>
-        /// 
+        /// Xử lý khi chọn một tab
         /// </summary>
         private void TabSelectedIndexChanged()
         {
@@ -325,13 +333,19 @@ namespace QLBH
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show(Const.GetMessageByCode("M03"), "Thông báo", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if(result == DialogResult.OK)
             {
                 Dispose();
                 FormHandler.frmLogin.Show();
             }
             
+        }
+
+        private void lklInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmAbout frm = new frmAbout();
+            frm.ShowDialog(this);
         }
     }
 }

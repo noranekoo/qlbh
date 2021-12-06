@@ -16,7 +16,7 @@ namespace QLBH
             txtOldPassword.Clear();
             txtNewPassword.Clear();
             txtRNewPassword.Clear();
-            
+            txtOldPassword.Focus();
         }
 
         private void btnSave_Click(object sender, EventArgs e)

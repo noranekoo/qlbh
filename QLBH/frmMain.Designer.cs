@@ -304,6 +304,7 @@ namespace QLBH
             this.lklInfo.TabIndex = 5;
             this.lklInfo.TabStop = true;
             this.lklInfo.Text = "Thông tin";
+            this.lklInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklInfo_LinkClicked);
             // 
             // btnReport
             // 
@@ -473,7 +474,6 @@ namespace QLBH
             this.Text = "QLK";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmMain_FormClosed);
-            this.Load += new System.EventHandler(this.frmMain_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

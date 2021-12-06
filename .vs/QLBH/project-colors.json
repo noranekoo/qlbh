@@ -25,7 +25,12 @@
       "ProjectGuid": "8c5f42a7-008e-45eb-976f-6ce361621324",
       "DisplayName": "BUS",
       "ColorIndex": 3
+    },
+    "006a4706-d5eb-4b97-803f-5bef05520f7b": {
+      "ProjectGuid": "006a4706-d5eb-4b97-803f-5bef05520f7b",
+      "DisplayName": "DataSeeder",
+      "ColorIndex": 4
     }
   },
-  "NextColorIndex": 4
+  "NextColorIndex": 5
 }

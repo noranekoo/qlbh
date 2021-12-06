@@ -59,10 +59,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BrandDAL.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="DataProviderException.cs" />
     <Compile Include="Encrypto.cs" />
+    <Compile Include="GoodsDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SupplierDAL.cs" />
     <Compile Include="UserDAL.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
+
 namespace QLBH.Resources
 {
     public partial class ToolBars : UserControl
@@ -93,15 +94,50 @@ namespace QLBH.Resources
         /// Button Foreground
         /// </summary>
         [Category("Button 1"), Description("Không có mô tả"), DisplayName("Foreground Color")]
-        public Color FColorT1 { get; set; }
+        public Color FColorT1
+        {
+            get => btnAdd.ForeColor;
+            set
+            {
+                btnAdd.ForeColor = value;
+            }
+        }
         [Category("Button 2"), Description("Không có mô tả"), DisplayName("Foreground Color")]
-        public Color FColorT2 { get; set; }
+        public Color FColorT2
+        {
+            get => btnEdit.ForeColor;
+            set
+            {
+                btnEdit.ForeColor = value;
+            }
+        }
         [Category("Button 3"), Description("Không có mô tả"), DisplayName("Foreground Color")]
-        public Color FColorT3 { get; set; }
+        public Color FColorT3
+        {
+            get => btnDelete.ForeColor;
+            set
+            {
+                btnDelete.ForeColor = value;
+            }
+        }
         [Category("Button 4"), Description("Không có mô tả"), DisplayName("Foreground Color")]
-        public Color FColorT4 { get; set; }
+        public Color FColorT4
+        {
+            get => btnPrint.ForeColor;
+            set
+            {
+                btnPrint.ForeColor = value;
+            }
+        }
         [Category("Button 5"), Description("Không có mô tả"), DisplayName("Foreground Color")]
-        public Color FColorT5 { get; set; }
+        public Color FColorT5
+        {
+            get => btnExcelExport.ForeColor;
+            set
+            {
+                btnExcelExport.ForeColor = value;
+            }
+        }
         /// <summary>
         /// Button Enabled
         /// </summary>
@@ -119,24 +155,94 @@ namespace QLBH.Resources
         /// Button Icon
         /// </summary>
         [Category("Button 1"), Description("Không có mô tả"), DisplayName("Icon")]
-        public Image ImageT1 { get; set; }
+        public Image ImageT1
+        {
+            get => btnAdd.Image;
+            set
+            {
+                if(value == null)
+                {
+                    btnAdd.Image = null;
+                }
+                else
+                {
+                    btnAdd.Image = value;
+                }
+            }
+        }
         [Category("Button 2"), Description("Không có mô tả"), DisplayName("Icon")]
-        public Image ImageT2 { get; set; }
+        public Image ImageT2
+        {
+            get => btnEdit.Image;
+            set
+            {
+                if (value == null)
+                {
+                    btnEdit.Image = null;
+                }
+                else
+                {
+                    btnEdit.Image = value;
+                }
+            }
+        }
         [Category("Button 3"), Description("Không có mô tả"), DisplayName("Icon")]
-        public Image ImageT3 { get; set; }
+        public Image ImageT3
+        {
+            get => btnDelete.Image;
+            set
+            {
+                if (value == null)
+                {
+                    btnDelete.Image = null;
+                }
+                else
+                {
+                    btnDelete.Image = value;
+                }
+            }
+        }
         [Category("Button 4"), Description("Không có mô tả"), DisplayName("Icon")]
-        public Image ImageT4 { get; set; }
+        public Image ImageT4
+        {
+            get => btnPrint.Image;
+            set
+            {
+                if (value == null)
+                {
+                    btnPrint.Image = null;
+                }
+                else
+                {
+                    btnPrint.Image = value;
+                }
+            }
+        }
         [Category("Button 5"), Description("Không có mô tả"), DisplayName("Icon")]
-        public Image ImageT5 { get; set; }
+        public Image ImageT5
+        {
+            get => btnExcelExport.Image;
+            set
+            {
+                if (value == null)
+                {
+                    btnExcelExport.Image = null;
+                }
+                else
+                {
+                    btnExcelExport.Image = value;
+                }
+            }
+        }
         #endregion
 
         #region Events
-        private EventHandler buttonClick;
+        private CustomEventHandler buttonClick;
         /// <summary>
         /// Xử lý sự kiện
         /// </summary>
         [Description("Không có mô tả"), DisplayName("ItemClick")]
-        public event EventHandler FClick
+        public event CustomEventHandler FClick
         {
             add
             {
@@ -154,29 +260,65 @@ namespace QLBH.Resources
             InitializeComponent();
         }
 
+        private int GetKey(object sender)
+        {
+            if (sender is Button btn)
+            {
+                if (btn == btnAdd) return 1;
+                if (btn == btnEdit) return 2;
+                if (btn == btnDelete) return 3;
+                if (btn == btnPrint) return 4;
+                return 5;
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        private CustomEvent GetEvent(object sender)
+        {
+            return new CustomEvent(GetKey(sender));
+        }
+
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            buttonClick(sender, e);
+            if(buttonClick != null)
+            {
+                buttonClick(sender, GetEvent(sender));
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            buttonClick(sender, e);
+            if (buttonClick != null)
+            {
+                buttonClick(sender, GetEvent(sender));
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            buttonClick(sender, e);
+            if (buttonClick != null)
+            {
+                buttonClick(sender, GetEvent(sender));
+            }
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            buttonClick(sender, e);
+            if (buttonClick != null)
+            {
+                buttonClick(sender, GetEvent(sender));
+            }
         }
 
         private void btnExcelExport_Click(object sender, EventArgs e)
         {
-            buttonClick(sender, e);
+            if (buttonClick != null)
+            {
+                buttonClick(sender, GetEvent(sender));
+            }
         }
     }
 }

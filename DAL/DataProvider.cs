@@ -23,7 +23,7 @@ namespace DAL
                 throw new DbConnectErrorException("Lỗi kết nối CSDL: ",e);
             }
         }
-        private static DataProvider dtp = new DataProvider();
+        private static readonly DataProvider dtp = new DataProvider();
         public static DataProvider GetInstance()
         {
             return dtp;
@@ -34,13 +34,12 @@ namespace DAL
         /// <param name="sql"></param>
         /// <param name="tbName"></param>
         /// <returns>Trả về một bảng dữ liệu</returns>
-        public DataTable SelectData(string tbName, OleDbParameter[] param, string cols, string whereStr = "")
+        public DataTable SelectData(string tbName, OleDbParameter[] param, string cols, string whereStr = "1=1")
         {
-            string sql = "";
-            DataTable dt = null;
+            DataTable dt;
             try
             {
-                sql = JoinSQL(Const.SELECT, tbName, cols, whereStr);
+                string sql = JoinSQL(Const.SELECT, tbName, cols, whereStr);
                 dt = new DataTable();
                 OleDbCommand cmd = new OleDbCommand(sql, odbConnect);
                 cmd.Parameters.AddRange(param);
@@ -78,6 +77,7 @@ namespace DAL
             else if ("U".Equals(sqlType))
             {
                 // Thực hiện lệnh update dữ liệu
+                sql = JoinSQL(Const.UPDATE, tbName, cols, values, whereStr);
             }
             else
             {
@@ -133,5 +133,7 @@ namespace DAL
         {
             return JoinSQL(sql, tbName, str1, str2).Replace("s3", str3);
         }
+
+        
     }
 }

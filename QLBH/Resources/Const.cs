@@ -9,27 +9,22 @@ namespace QLBH.Resources
 {
     public class Const
     {
-        //public static DialogResult GetMessage(string code, string type)
-        //{
-        //    string message = GetMessageByCode(code);
-        //    switch (type)
-        //    {
-        //        case "W":
-        //            //return MessageBox.Show(message,"Thông báo",)
-        //            break;
-        //        case "I":
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //    //return message;
-        //}
+       
 
         public static string GetMessageByCode(string code)
         {
             string message = "";
             switch (code)
             {
+                case "M01":
+                    message = "Hiện có một tab tương tự đang được mở";
+                    break;
+                case "M02":
+                    message = "Bạn có chắc chắn muốn thoát hoàn toàn chương trình?\n Mọi dữ liệu sẽ không được lưu lại!";
+                    break;
+                case "M03":
+                    message = "Bạn có chắc chắn muốn đăng xuất?";
+                    break;
                 case "SET01":
                     message = "Mật khẩu cũ không đúng";
                     break;

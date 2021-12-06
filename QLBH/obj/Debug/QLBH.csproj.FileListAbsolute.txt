@@ -28,3 +28,5 @@ E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.frmGoodsIE.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.frmReport.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.frmBackupData.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Resources.ToolBars.resources
+E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.frmAbout.resources
+E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.frmWelcome.resources

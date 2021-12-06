@@ -8,7 +8,7 @@ namespace DataSeeder
 {
     class Program
     {
-        static string PATH = "device_key";
+        static readonly string PATH = "device_key";
         static void Main(string[] args)
         {
             Console.WriteLine("---------------------------USER SEEDER---------------------------");
@@ -22,8 +22,8 @@ namespace DataSeeder
                 string key = Encrypto.SHAHash(GenerateKey());
                 File.WriteAllText("device_key", $"key={key}");
             }
-            int result = 0;
-            bool isSuccess = false;
+            //int result = 0;
+            //bool isSuccess = false;
             //do
             //{
             //    Console.Write("Nhap so luong tai khoan can tao: ");

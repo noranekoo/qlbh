@@ -103,6 +103,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\frmBackupData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +169,12 @@
     <Compile Include="Pages\frmReport.Designer.cs">
       <DependentUpon>frmReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\frmWelcome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\frmWelcome.Designer.cs">
+      <DependentUpon>frmWelcome.cs</DependentUpon>
+    </Compile>
     <Compile Include="Parameter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -175,6 +187,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Resources\Const.cs" />
+    <Compile Include="Resources\CustomEventHandler.cs" />
     <Compile Include="Resources\FormHandler.cs" />
     <Compile Include="Resources\MessageCustom.cs">
       <SubType>Form</SubType>
@@ -197,6 +210,9 @@
     <Compile Include="Resources\ToolBars.Designer.cs">
       <DependentUpon>ToolBars.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\frmBackupData.resx">
       <DependentUpon>frmBackupData.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\frmReport.resx">
       <DependentUpon>frmReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\frmWelcome.resx">
+      <DependentUpon>frmWelcome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
