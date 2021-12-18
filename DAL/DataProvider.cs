@@ -11,6 +11,7 @@ namespace DAL
     {
         const string conStr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=db.accdb;Jet OLEDB:Database Password=1234;";
         static OleDbConnection odbConnect = null;
+        public static DataProvider Instance { get; set; } = new DataProvider();
         public DataProvider()
         {
             try
@@ -23,11 +24,7 @@ namespace DAL
                 throw new DbConnectErrorException("Lỗi kết nối CSDL: ",e);
             }
         }
-        private static readonly DataProvider dtp = new DataProvider();
-        public static DataProvider GetInstance()
-        {
-            return dtp;
-        }
+
         /// <summary>
         /// Lấy dữ liệu
         /// </summary>
@@ -52,6 +49,45 @@ namespace DAL
             }
             return dt;
         }
+
+        public int Insert(string tbName, OleDbParameter [] pa, string cols, string values)
+        {
+            string sql = JoinSQL(Const.INSERT, tbName, cols, values);
+            try
+            {
+                OleDbCommand cmd = new OleDbCommand(sql, odbConnect);
+                cmd.Parameters.AddRange(pa);
+                return cmd.ExecuteNonQuery();
+            }
+            catch(Exception e)
+            {
+                return -1;
+                throw e.InnerException;
+            }
+        }
+
+        public int Delete(string tbName, OleDbParameter[] pa, string whereStr)
+        {
+            string sql = JoinSQL(Const.DELETE, tbName, whereStr);
+            try
+            {
+                OleDbCommand cmd = new OleDbCommand(sql, odbConnect);
+                cmd.Parameters.AddRange(pa);
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                return -1;
+                throw e.InnerException;
+            }
+            
+        }
+
+        public void Update(string tbName, OleDbParameter[] pa, string cols)
+        {
+
+        }
+
         /// <summary>
         /// Cập nhật dữ liệu
         /// </summary>
@@ -59,33 +95,34 @@ namespace DAL
         /// <param name="param"></param>
         /// <param name="sqlType"></param>
         /// <returns></returns>
-        public int UpdateData(string tbName, OleDbParameter[] param, string sqlType, string cols = "", string whereStr = "1=1")
+        public void UpdateData(string tbName, DataTable dt , string cols = "", string whereStr = "1=1")
         {
-            string sql = "";
-            string values = "";
-            foreach(OleDbParameter p in param)
-            {
-                values += $"@{p.ParameterName} ";
-            }
-            values = values.Trim();
-            values = values.Replace(" ", ",");
-            if ("C".Equals(sqlType))
-            {
-                // Thực hiện lệnh insert dữ liệu
-                sql = JoinSQL(Const.INSERT, tbName, cols, values);
-            }
-            else if ("U".Equals(sqlType))
-            {
-                // Thực hiện lệnh update dữ liệu
-                sql = JoinSQL(Const.UPDATE, tbName, cols, values, whereStr);
-            }
-            else
-            {
-                // Thực hiện lệnh delete dữ liệu
-            }
+            string sql = JoinSQL(Const.SELECT, tbName, cols, whereStr);
             OleDbCommand cmd = new OleDbCommand(sql, odbConnect);
-            cmd.Parameters.AddRange(param);
-            return cmd.ExecuteNonQuery();
+            OleDbTransaction trans;
+            
+            OleDbDataAdapter da = new OleDbDataAdapter(cmd);
+            OleDbCommandBuilder ocb = new OleDbCommandBuilder(da);
+            da.InsertCommand = ocb.GetInsertCommand(true);
+            da.UpdateCommand = ocb.GetUpdateCommand(true);
+            da.DeleteCommand = ocb.GetDeleteCommand(true);
+            //Tạo transaction cho việc thay đổi dữ liệu
+            trans = odbConnect.BeginTransaction();
+            da.InsertCommand.Transaction = trans;
+            da.UpdateCommand.Transaction = trans;
+            da.DeleteCommand.Transaction = trans;
+            try
+            {
+                da.Update(dt);
+                //Thực hiện commit dữ liệu khi tác vụ thành công
+                trans.Commit();
+            }
+            catch (Exception e)
+            {
+                //Không thực hiện update dữ liệu
+                trans.Rollback();
+                throw e.InnerException;
+            }
         }
         /// <summary>
         /// Đóng kết nối

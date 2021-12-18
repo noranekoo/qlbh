@@ -10,6 +10,23 @@ namespace DAL
 {
     public class BrandDAL
     {
+        public readonly static BrandDAL Instance = new BrandDAL();
+        
+        public static DataTable 
+            GetBrandList()
+        {
+            OleDbParameter[] parameters = new OleDbParameter[0];
+            try
+            {
+                return DataProvider.Instance.SelectData("Hang", parameters, "*");
+            }
+            catch (Exception e)
+            {
+                return null;
+                throw e.InnerException;
+            }
+        }
+
         public static Brand GetBrand(int id)
         {
             try
@@ -18,7 +35,7 @@ namespace DAL
                 {
                     new OleDbParameter("maHang", id),
                 };
-                DataTable dt = DataProvider.GetInstance().SelectData("Hang", param, "*", "MaHang=@maHang");
+                DataTable dt = DataProvider.Instance.SelectData("Hang", param, "*", "MaHang=@maHang");
                 if(dt != null && dt.Rows.Count > 0)
                 {
                     return ConvertToDTO(dt.Rows[0]);
@@ -31,6 +48,18 @@ namespace DAL
                 throw e.InnerException;
             }
             
+        }
+
+        public static void UpdateData(string tbName, DataTable dt)
+        {
+            try
+            {
+                DataProvider.Instance.UpdateData(tbName, dt, "*");
+            }
+            catch(Exception e)
+            {
+                throw e;
+            }
         }
 
         private static Brand ConvertToDTO(DataRow dr)

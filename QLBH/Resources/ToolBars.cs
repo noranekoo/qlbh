@@ -141,16 +141,51 @@ namespace QLBH.Resources
         /// <summary>
         /// Button Enabled
         /// </summary>
-        [Category("Button 1"), Description("Không có mô tả"), DisplayName("Enabled Color")]
-        public bool EnableT1 { get; set; } = true;
-        [Category("Button 2"), Description("Không có mô tả"), DisplayName("Enabled Color")]
-        public bool EnableT2 { get; set; } = true;
-        [Category("Button 3"), Description("Không có mô tả"), DisplayName("Enabled Color")]
-        public bool EnableT3 { get; set; } = true;
-        [Category("Button 4"), Description("Không có mô tả"), DisplayName("Enabled Color")]
-        public bool EnableT4 { get; set; } = true;
-        [Category("Button 5"), Description("Không có mô tả"), DisplayName("Enabled Color")]
-        public bool EnableT5 { get; set; } = true;
+        [Category("Button 1"), Description("Không có mô tả"), DisplayName("Enabled")]
+        public bool EnableT1
+        {
+            get => btnAdd.Enabled;
+            set
+            {
+                btnAdd.Enabled = value;
+            }
+        }
+        [Category("Button 2"), Description("Không có mô tả"), DisplayName("Enabled")]
+        public bool EnableT2
+        {
+            get => btnAdd.Enabled;
+            set
+            {
+                btnEdit.Enabled = value;
+            }
+        }
+        [Category("Button 3"), Description("Không có mô tả"), DisplayName("Enabled")]
+        public bool EnableT3
+        {
+            get => btnDelete.Enabled;
+            set
+            {
+                btnDelete.Enabled = value;
+            }
+        }
+        [Category("Button 4"), Description("Không có mô tả"), DisplayName("Enabled")]
+        public bool EnableT4
+        {
+            get => btnPrint.Enabled;
+            set
+            {
+                btnPrint.Enabled = value;
+            }
+        }
+        [Category("Button 5"), Description("Không có mô tả"), DisplayName("Enabled")]
+        public bool EnableT5
+        {
+            get => btnExcelExport.Enabled;
+            set
+            {
+                btnExcelExport.Enabled = value;
+            }
+        }
         /// <summary>
         /// Button Icon
         /// </summary>

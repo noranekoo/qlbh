@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL;
+using DTO;
+
 namespace BUS
 {
     public class GoodsBUS
@@ -13,14 +15,15 @@ namespace BUS
         {
 
         }
-        public static DataTable GetData()
+        public static List<Goods> GetData()
         {
             try
             {
-                return null;
+                return GoodsDAL.GetData();
             }
             catch (Exception e)
             {
+                return null;
                 throw e.InnerException;
             }
             

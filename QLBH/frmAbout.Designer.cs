@@ -49,7 +49,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(49, 36);
+            this.pictureBox1.Location = new System.Drawing.Point(51, 36);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(136, 115);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -68,7 +68,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 175);
+            this.label2.Location = new System.Drawing.Point(18, 175);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 20);
             this.label2.TabIndex = 3;
@@ -77,7 +77,7 @@
             // lklEmail
             // 
             this.lklEmail.AutoSize = true;
-            this.lklEmail.Location = new System.Drawing.Point(12, 195);
+            this.lklEmail.Location = new System.Drawing.Point(19, 195);
             this.lklEmail.Name = "lklEmail";
             this.lklEmail.Size = new System.Drawing.Size(174, 20);
             this.lklEmail.TabIndex = 4;
@@ -89,15 +89,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
-            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(229, 233);
+            this.ClientSize = new System.Drawing.Size(238, 231);
             this.Controls.Add(this.lklEmail);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblYear);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;

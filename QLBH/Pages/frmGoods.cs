@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
+using DTO;
+using QLBH.Pages.Goods;
 
 namespace QLBH.Pages
 {
@@ -21,15 +23,18 @@ namespace QLBH.Pages
         private void toolBars1_FClick(object sender, Resources.CustomEvent e)
         {
             MessageBox.Show(e.Key.ToString());
+            
         }
 
         private void frmGoods_Load(object sender, EventArgs e)
         {
-            //MessageBox.Show("aaaa");
-            //DataTable dt = GoodsBUS.GetData(); 
             dgvData.DataSource = GoodsBUS.GetData();
-            
-            
+        }
+
+        private void btnBrand_Click(object sender, EventArgs e)
+        {
+            frmBrand frm = new frmBrand();
+            frm.ShowDialog(this);
         }
     }
 }

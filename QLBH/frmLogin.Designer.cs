@@ -173,6 +173,8 @@ namespace QLBH
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";
+            this.Load += new System.EventHandler(this.frmLogin_Load);
+            this.Shown += new System.EventHandler(this.frmLogin_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grbContainer.ResumeLayout(false);
             this.grbContainer.PerformLayout();

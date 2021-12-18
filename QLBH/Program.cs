@@ -1,4 +1,6 @@
-﻿using QLBH.Resources;
+﻿using DAL;
+using QLBH.Pages.Goods;
+using QLBH.Resources;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;

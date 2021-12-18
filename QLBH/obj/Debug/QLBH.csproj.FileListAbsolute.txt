@@ -16,7 +16,6 @@ E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\DTO.pdb
 E:\DEVDIR\C#\QLBH\QLBH\bin\Debug\DAL.pdb
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.frmLogin.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.frmMain.resources
-E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Resources.MessageCustom.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Resources.TabButtonCustom.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.frmSettings.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.csproj.SuggestedBindingRedirects.cache
@@ -30,3 +29,6 @@ E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.frmBackupData.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Resources.ToolBars.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.frmAbout.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.frmWelcome.resources
+E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.Goods.frmBrand.resources
+E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.Goods.frmUnit.resources
+E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.frmTesting.resources

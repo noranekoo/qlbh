@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using BUS;
 using DTO;
 using QLBH.Resources;
+using DAL;
 
 namespace QLBH
 {
@@ -16,13 +17,20 @@ namespace QLBH
             {"next_unclick",Image.FromFile("images\\login_unclick.png") },
             {"next_clicked",Image.FromFile("images\\login_clicked.png") }
         };
+
+        public bool IsCheckSession { get; set; } = true;
+        
         public frmLogin()
         {
-            InitializeComponent();
-            _user = $"{SystemInformation.UserDomainName}\\{SystemInformation.UserName}";
-            lblUser.Text = _user;
             FormHandler.frmLogin = this;
+            _user = $"{SystemInformation.UserDomainName}\\{SystemInformation.UserName}";
+            
+            
+            InitializeComponent();
+            lblUser.Text = _user;
+
         }
+
 
         private void lblUser_MouseHover(object sender, EventArgs e)
         {
@@ -48,6 +56,16 @@ namespace QLBH
                     frmMain main = new frmMain();
                     main.Show();
                     txtPassword.Clear();
+                    //Bắt đầu 2021_12_15 - Xử lý khi chọn Lưu đăng nhập - Thi
+                    if (ckbSaveSession.Checked)
+                    {
+                        int result = UserDAL.Instance.SaveSession(user, false);
+                        if(result == -1)
+                        {
+                            MessageBox.Show("Có lỗi khi lưu lại phiên đăng nhập.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    //Kết thúc 2021_12_15 - Thi
                 }
                 else
                 {
@@ -59,6 +77,19 @@ namespace QLBH
                 MessageBox.Show(ex.Message);
             }
             
+        }
+
+        bool CheckSession()
+        {
+            try
+            {
+                return UserDAL.Instance.GetSession(_user);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                return false;
+            }
         }
 
         private void btnLogin_MouseEnter(object sender, EventArgs e)
@@ -83,6 +114,29 @@ namespace QLBH
         private void ckbSaveSession_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void frmLogin_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void frmLogin_Shown(object sender, EventArgs e)
+        {
+            if (CheckSession() && IsCheckSession)
+            {
+                Hide();
+                FormHandler.UserInfo = UserDAL.Instance.GetUser(_user);
+                FormHandler.UserInfo.FullName = !string.IsNullOrEmpty(FormHandler.UserInfo.FullName) ? FormHandler.UserInfo.FullName : SystemInformation.UserName;
+                frmMain frm = new frmMain();
+                frm.Show(this);
+            }
+            else
+            {
+
+
+                //FormHandler.UserInfo = null;
+            }
         }
     }
 }

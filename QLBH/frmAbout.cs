@@ -21,7 +21,6 @@ namespace QLBH
 
         private void lklEmail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start($"mailto:{lklEmail.Text}");
         }
     }
 }

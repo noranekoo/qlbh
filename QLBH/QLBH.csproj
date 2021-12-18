@@ -109,6 +109,12 @@
     <Compile Include="frmAbout.Designer.cs">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTesting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTesting.Designer.cs">
+      <DependentUpon>frmTesting.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\frmBackupData.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,6 +181,18 @@
     <Compile Include="Pages\frmWelcome.Designer.cs">
       <DependentUpon>frmWelcome.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Goods\frmBrand.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Goods\frmBrand.Designer.cs">
+      <DependentUpon>frmBrand.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Goods\frmUnit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Goods\frmUnit.Designer.cs">
+      <DependentUpon>frmUnit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Parameter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -189,12 +207,6 @@
     <Compile Include="Resources\Const.cs" />
     <Compile Include="Resources\CustomEventHandler.cs" />
     <Compile Include="Resources\FormHandler.cs" />
-    <Compile Include="Resources\MessageCustom.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Resources\MessageCustom.Designer.cs">
-      <DependentUpon>MessageCustom.cs</DependentUpon>
-    </Compile>
     <Compile Include="Resources\TabButtonCustom.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -212,6 +224,9 @@
     </Compile>
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTesting.resx">
+      <DependentUpon>frmTesting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\frmBackupData.resx">
       <DependentUpon>frmBackupData.cs</DependentUpon>
@@ -246,13 +261,16 @@
     <EmbeddedResource Include="Pages\frmWelcome.resx">
       <DependentUpon>frmWelcome.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Goods\frmBrand.resx">
+      <DependentUpon>frmBrand.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Goods\frmUnit.resx">
+      <DependentUpon>frmUnit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resources\MessageCustom.resx">
-      <DependentUpon>MessageCustom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\TabButtonCustom.resx">
       <DependentUpon>TabButtonCustom.cs</DependentUpon>
@@ -262,6 +280,8 @@
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Properties\app.manifest" />
+    <None Include="Properties\DataSources\DTO.Brand.datasource" />
+    <None Include="Properties\DataSources\DTO.Goods.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -277,6 +297,10 @@
     <ProjectReference Include="..\BUS\BUS.csproj">
       <Project>{8C5F42A7-008E-45EB-976F-6CE361621324}</Project>
       <Name>BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.csproj">
+      <Project>{47297c5a-779a-4e6e-be5c-7e55928b2cad}</Project>
+      <Name>DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\DTO\DTO.csproj">
       <Project>{d342c0d7-6a1b-4656-b50b-4777dd576fbc}</Project>
@@ -312,6 +336,9 @@
     <None Include="bin\Debug\images\data-integration.png" />
     <None Include="bin\Debug\images\report.png" />
     <None Include="bin\Debug\images\warehouse.png" />
+    <None Include="bin\Debug\images\copy-writing.png" />
+    <None Include="bin\Debug\images\reset.png" />
+    <None Include="bin\Debug\images\selection.png" />
     <Content Include="qlbh_icon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +347,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\Cooperation\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

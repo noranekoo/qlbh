@@ -25,6 +25,12 @@ namespace QLBH.Resources
                 case "M03":
                     message = "Bạn có chắc chắn muốn đăng xuất?";
                     break;
+                case "PGB01":
+                    message = "Không có dữ liệu!";
+                    break;
+                case "PGB02":
+                    message = "Dữ liệu nhập vào không hợp lệ.\nVui lòng nhập lại!";
+                    break;
                 case "SET01":
                     message = "Mật khẩu cũ không đúng";
                     break;

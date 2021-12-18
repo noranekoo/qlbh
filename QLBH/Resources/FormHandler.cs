@@ -19,19 +19,70 @@ namespace QLBH.Resources
             Error
         }
 
+        public enum ModeControl
+        {
+            NONE,
+            ADD,
+            EDIT,
+            DELETE,
+            PRINT,
+            EX_EXCEL
+        }
+
         public static UserInfo UserInfo = null;
         public static Form frmLogin = new frmLogin();
+        /// <summary>
+        /// Xử lý điều khiển thanh công cụ
+        /// </summary>
+        /// <param name="tlbar"></param>
+        /// <param name="cso"></param>
+        public static void SetControlState(ToolBars tlbar, ModeControl cso)
+        {
+            switch (cso)
+            {
+                case ModeControl.ADD:
+                    tlbar.EnableT1 = false;
+                    tlbar.EnableT2 = true;
+                    tlbar.EnableT3 = true;
+                    tlbar.EnableT4 = false;
+                    tlbar.EnableT5 = false;
+                    break;
+                case ModeControl.EDIT:
+                    tlbar.EnableT1 = true;
+                    tlbar.EnableT2 = false;
+                    tlbar.EnableT3 = true;
+                    tlbar.EnableT4 = false;
+                    tlbar.EnableT5 = false;
+                    break;
+                case ModeControl.DELETE:
+                    tlbar.EnableT1 = true;
+                    tlbar.EnableT2 = true;
+                    tlbar.EnableT3 = true;
+                    tlbar.EnableT4 = false;
+                    tlbar.EnableT5 = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="title"></param>
+        /// <param name="icon"></param>
+        /// <param name="owner"></param>
         public static void ShowMessage(string message, string title, MessageIcon icon, Form owner = null)
         {
-            MessageCustom mc = new MessageCustom() { Message = message, MessageTitle = title, MessageIcon = icon };
-            if(owner != null)
-            {
-                mc.ShowDialog(owner);
-            }
-            else
-            {
-                mc.ShowDialog();
-            }
+            //MessageCustom mc = new MessageCustom() { Message = message, MessageTitle = title, MessageIcon = icon };
+            //if(owner != null)
+            //{
+            //    mc.ShowDialog(owner);
+            //}
+            //else
+            //{
+            //    mc.ShowDialog();
+            //}
             
         }
 

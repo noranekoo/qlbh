@@ -1,4 +1,5 @@
-﻿using QLBH.Pages;
+﻿using DAL;
+using QLBH.Pages;
 using QLBH.Resources;
 using System;
 using System.Collections.Generic;
@@ -97,12 +98,7 @@ namespace QLBH
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            //Tắt hoàn toàn chương trình
-            DialogResult dialog = MessageBox.Show(Const.GetMessageByCode("M02"), "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if(dialog == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
+            
         }
 
         private void btnMaximize_Click(object sender, EventArgs e)
@@ -337,7 +333,17 @@ namespace QLBH
             if(result == DialogResult.OK)
             {
                 Dispose();
-                FormHandler.frmLogin.Show();
+                int rlt = UserDAL.Instance.SaveSession(FormHandler.UserInfo.Info,true);
+                if(rlt != -1)
+                {
+                    FormHandler.frmLogin.Show();
+                    FormHandler.UserInfo = null;
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi khi đăng xuất", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    FormHandler.frmLogin.Dispose();
+                }
             }
             
         }
@@ -346,6 +352,20 @@ namespace QLBH
         {
             frmAbout frm = new frmAbout();
             frm.ShowDialog(this);
+        }
+
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //Tắt hoàn toàn chương trình
+            DialogResult dialog = MessageBox.Show(Const.GetMessageByCode("M02"), "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialog == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                FormHandler.frmLogin.Dispose();
+            }
         }
     }
 }

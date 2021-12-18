@@ -20,7 +20,7 @@ namespace DAL
                     new OleDbParameter("mancc", id)
                 };
                 string whereStr = "MaNCC=@mancc";
-                DataTable dt = DataProvider.GetInstance().SelectData("NhaCungCap", param, "*", whereStr);
+                DataTable dt = DataProvider.Instance.SelectData("NhaCungCap", param, "*", whereStr);
                 if(dt != null && dt.Rows.Count > 0)
                 {
                     return ConvertToDTO(dt.Rows[0]);

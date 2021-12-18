@@ -15,6 +15,7 @@ namespace QLBH.Pages
         public frmReport()
         {
             InitializeComponent();
+            
         }
     }
 }

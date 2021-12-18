@@ -13,9 +13,43 @@ namespace DAL
         {
             
         }
+        public static UserDAL Instance { get; set; } = new UserDAL();
         public static bool IsExistUser(User user)
         {
             return GetUser(user) != null;
+        }
+
+        public UserInfo GetUser(string userName)
+        {
+            try
+            {
+                OleDbParameter[] param =
+                {
+                    new OleDbParameter("user", userName),
+                };
+                DataTable dt = DataProvider.Instance.SelectData("NguoiDung", param, "*", "TenDangNhap=@user");
+                int count = dt.Rows.Count;
+                if (count > 0)
+                {
+                    string pwd = dt.Rows[0]["MatKhau"].ToString();
+                    User user = new User(userName, pwd);
+                    UserInfo info = new UserInfo()
+                    {
+                        Info = user,
+                        FullName = dt.Rows[0]["HoTen"].ToString(),
+                        Email = dt.Rows[0]["Email"].ToString(),
+                        Phone = dt.Rows[0]["SDT"].ToString(),
+                        Address = dt.Rows[0]["DiaChi"].ToString()
+                    };
+                    return info;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e.InnerException;
+            }
+
+            return null;
         }
         /// <summary>
         /// Lấy thông tin người dùng
@@ -30,7 +64,7 @@ namespace DAL
                 {
                     new OleDbParameter("user", user.UserName),
                 };
-                DataTable dt = DataProvider.GetInstance().SelectData("NguoiDung", param,"*", "TenDangNhap=@user");
+                DataTable dt = DataProvider.Instance.SelectData("NguoiDung", param,"*", "TenDangNhap=@user");
                 int count = dt.Rows.Count;
                 if (count > 0)
                 {
@@ -74,7 +108,66 @@ namespace DAL
                 new OleDbParameter("user", user.UserName),
                 new OleDbParameter("pass", pwd),
             };
-            return DataProvider.GetInstance().UpdateData("NguoiDung", param, "C", "TenDangNhap,MatKhau");
+            return 0;
+            //return DataProvider.GetInstance().UpdateData("NguoiDung", param, "C", "TenDangNhap,MatKhau");
+        }
+        
+        public int SaveSession(User user, bool isDelete)
+        {
+            string dt = !isDelete
+                ? DateTime.Now.AddDays(1).ToString("dd/MM/yyyy HH:mm:ss")
+                : DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy HH:mm:ss");
+            OleDbParameter[] pa = new
+                OleDbParameter[1]
+            {
+                new OleDbParameter("userId",user.UserName),
+            };
+            OleDbParameter[] pa2 = new
+                OleDbParameter[0];
+            try
+            {
+                int dltResult = DataProvider.Instance.Delete("Sessions", pa2, "1=1");
+                if (dltResult != -1)
+                {
+                    return DataProvider.Instance.Insert("Sessions", pa, "UserID, Exp", $"@userId,\'{dt}\'");
+                }
+            }
+            catch(Exception e)
+            {
+                return -1;
+            }
+
+            return -1;
+        }
+
+        public bool GetSession(string userName)
+        {
+            OleDbParameter[] pa = new OleDbParameter[1]
+            {
+                new OleDbParameter("userName", userName)
+            };
+            try
+            {
+                DataTable dt = DataProvider.Instance.SelectData("Sessions", pa, "*", $"UserID=@userName");
+                if(dt!= null)
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        DateTime exp = DateTime.Now;
+                        bool s = DateTime.TryParse(dt.Rows[0]["Exp"].ToString(),out exp);
+                        if (s)
+                        {
+                            return exp > DateTime.Now;
+                        }
+                    }
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+                throw e.InnerException;
+            }
         }
 
         /// <summary>

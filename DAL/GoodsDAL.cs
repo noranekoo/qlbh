@@ -23,7 +23,7 @@ namespace DAL
             {
                 List<Goods> list = new List<Goods>();
                 OleDbParameter[] param = new OleDbParameter[0];
-                DataTable dt = DataProvider.GetInstance().SelectData("HangHoa", param, "*");
+                DataTable dt = DataProvider.Instance.SelectData("HangHoa", param, "*");
                 foreach(DataRow dr in dt.Rows)
                 {
                     list.Add(ConvertToDTO(dr));
@@ -36,33 +36,14 @@ namespace DAL
                 throw e.InnerException;
             }   
         }
-
-        //public static GoodsType GetGoodsType(int id)
-        //{
-        //    try
-        //    {
-        //        OleDbParameter[] param = new OleDbParameter[1]
-        //        {
-        //            new OleDbParameter("nhomHang", id)
-        //        };
-        //        DataTable dt = DataProvider.GetInstance().SelectData("NhomHang", param, "*", "MaNhom=@nhomHang");
-        //        if(dt != null && dt.Rows.Count > 0)
-        //        {
-        //            return null;
-        //        }
-        //        return null;
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        return null;
-        //        throw e.InnerException;
-        //    }
-        //}
+       
 
         private static Goods ConvertToDTO(DataRow dr)
         {
             Brand brand = BrandDAL.GetBrand(int.Parse(dr["Hang"].ToString()));
             Supplier supplier = SupplierDAL.GetSupplier(int.Parse(dr["NhaCungCap"].ToString()));
+            GoodsType type = GoodsTypeDAL.GetGoodsType(int.Parse(dr["Nhom"].ToString()));
+            Unit unit = UnitDAL.Instance.GetUnit(int.Parse(dr["DonViTinh"].ToString()));
             return new Goods()
             {
                 Goods_id = dr["MaHang"].ToString(),
@@ -73,17 +54,13 @@ namespace DAL
                 Supplier_name = supplier.SupplierName,
                 Goods_price_buy = dr["DonGiaMua"].ToString(),
                 Goods_price_sell = dr["DonGiaBan"].ToString(),
-                Goods_type = dr["Nhom"].ToString()
+                Goods_type_Id = type.GoodsTypeID,
+                Goods_type_nm = type.GoodsTypeName,
+                Unit_id = unit.Id,
+                Unit_name = unit.Unit_name 
             };
         }
 
-        //private static GoodsType ConvertToDTO(DataRow dr)
-        //{
-        //    return new GoodsType()
-        //    {
-        //        GoodsTypeID = int.Parse(dr["MaNhom"].ToString()),
-        //        GoodsTypeName = dr["TenNhom"].ToString(),
-        //    };
-        //}
+        
     }
 }
