@@ -1,6 +1,5 @@
 E:\DEVDIR\C#\QLBH\BUS\bin\Debug\BUS.dll
 E:\DEVDIR\C#\QLBH\BUS\bin\Debug\BUS.pdb
-E:\DEVDIR\C#\QLBH\BUS\obj\Debug\BUS.csproj.AssemblyReference.cache
 E:\DEVDIR\C#\QLBH\BUS\obj\Debug\BUS.csproj.CoreCompileInputs.cache
 E:\DEVDIR\C#\QLBH\BUS\obj\Debug\BUS.dll
 E:\DEVDIR\C#\QLBH\BUS\obj\Debug\BUS.pdb
@@ -9,3 +8,4 @@ E:\DEVDIR\C#\QLBH\BUS\bin\Debug\DTO.dll
 E:\DEVDIR\C#\QLBH\BUS\bin\Debug\DAL.pdb
 E:\DEVDIR\C#\QLBH\BUS\bin\Debug\DTO.pdb
 E:\DEVDIR\C#\QLBH\BUS\obj\Debug\BUS.csproj.CopyComplete
+E:\DEVDIR\C#\QLBH\BUS\obj\Debug\BUS.csprojAssemblyReference.cache

@@ -15,6 +15,7 @@ namespace QLBH.Pages
         public frmCelebration()
         {
             InitializeComponent();
+            //reportDocument1.
         }
     }
 }

@@ -128,9 +128,8 @@ namespace QLBH
             this.lblFullName.ForeColor = System.Drawing.Color.Coral;
             this.lblFullName.Location = new System.Drawing.Point(868, 14);
             this.lblFullName.Name = "lblFullName";
-            this.lblFullName.Size = new System.Drawing.Size(139, 23);
+            this.lblFullName.Size = new System.Drawing.Size(0, 23);
             this.lblFullName.TabIndex = 2;
-            this.lblFullName.Text = "Nguyen Anh Thi";
             this.lblFullName.Paint += new System.Windows.Forms.PaintEventHandler(this.lblFullName_Paint);
             // 
             // btnSettings

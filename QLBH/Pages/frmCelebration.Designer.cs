@@ -35,21 +35,21 @@ namespace QLBH.Pages
             // 
             // toolBars1
             // 
-            this.toolBars1.BColorT1 = System.Drawing.Color.Empty;
-            this.toolBars1.BColorT2 = System.Drawing.Color.Empty;
-            this.toolBars1.BColorT3 = System.Drawing.Color.Empty;
-            this.toolBars1.BColorT4 = System.Drawing.Color.Empty;
-            this.toolBars1.BColorT5 = System.Drawing.Color.Empty;
+            this.toolBars1.BColorT1 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.toolBars1.BColorT2 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.toolBars1.BColorT3 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.toolBars1.BColorT4 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
+            this.toolBars1.BColorT5 = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(51)))));
             this.toolBars1.EnableT1 = true;
             this.toolBars1.EnableT2 = true;
             this.toolBars1.EnableT3 = true;
             this.toolBars1.EnableT4 = true;
             this.toolBars1.EnableT5 = true;
-            this.toolBars1.FColorT1 = System.Drawing.Color.Empty;
-            this.toolBars1.FColorT2 = System.Drawing.Color.Empty;
-            this.toolBars1.FColorT3 = System.Drawing.Color.Empty;
-            this.toolBars1.FColorT4 = System.Drawing.Color.Empty;
-            this.toolBars1.FColorT5 = System.Drawing.Color.Empty;
+            this.toolBars1.FColorT1 = System.Drawing.SystemColors.ControlText;
+            this.toolBars1.FColorT2 = System.Drawing.SystemColors.ControlText;
+            this.toolBars1.FColorT3 = System.Drawing.SystemColors.ControlText;
+            this.toolBars1.FColorT4 = System.Drawing.SystemColors.ControlText;
+            this.toolBars1.FColorT5 = System.Drawing.SystemColors.ControlText;
             this.toolBars1.ImageT1 = null;
             this.toolBars1.ImageT2 = null;
             this.toolBars1.ImageT3 = null;

@@ -1,4 +1,6 @@
 ﻿using DAL;
+using QLBH.Pages;
+using QLBH.Pages.Celebration;
 using QLBH.Pages.Goods;
 using QLBH.Resources;
 using System;
@@ -17,7 +19,7 @@ namespace QLBH
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new frmDepart());
         }
     }
 }
