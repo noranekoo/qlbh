@@ -9,7 +9,7 @@ namespace DAL
 {
     public class DataProvider
     {
-        const string conStr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=db.accdb;Jet OLEDB:Database Password=1234;";
+        const string conStr = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=db.accdb;";
         static OleDbConnection odbConnect = null;
         public static DataProvider Instance { get; set; } = new DataProvider();
         public DataProvider()
@@ -82,10 +82,15 @@ namespace DAL
             }
             
         }
-
-        public void Update(string tbName, OleDbParameter[] pa, string cols)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tbName"></param>
+        /// <param name="pa"></param>
+        /// <param name="cols"></param>
+        public void Update(string tbName, OleDbParameter[] pa, string cols, string values)
         {
-
+            
         }
 
         /// <summary>

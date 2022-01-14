@@ -115,8 +115,8 @@ namespace DAL
         public int SaveSession(User user, bool isDelete)
         {
             string dt = !isDelete
-                ? DateTime.Now.AddDays(1).ToString("dd/MM/yyyy HH:mm:ss")
-                : DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy HH:mm:ss");
+                ? DateTime.Now.AddDays(1).ToString("dd/MM/yyyy")
+                : DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy");
             OleDbParameter[] pa = new
                 OleDbParameter[1]
             {
@@ -153,12 +153,9 @@ namespace DAL
                 {
                     if (dt.Rows.Count > 0)
                     {
-                        DateTime exp = DateTime.Now;
-                        bool s = DateTime.TryParse(dt.Rows[0]["Exp"].ToString(),out exp);
-                        if (s)
-                        {
-                            return exp > DateTime.Now;
-                        }
+                        DateTime exp = DateTime.Parse(dt.Rows[0]["Exp"].ToString());
+
+                        return exp.Ticks > DateTime.Now.Ticks;
                     }
                 }
                 return false;

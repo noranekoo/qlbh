@@ -81,7 +81,7 @@ namespace QLBH.Pages.Celebration
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-
+            DialogResult = DialogResult.OK;
         }
 
         /// <summary>

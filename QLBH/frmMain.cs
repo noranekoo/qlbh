@@ -33,22 +33,25 @@ namespace QLBH
             SetStyle(ControlStyles.ResizeRedraw, true);
             tpList = new Dictionary<int, TabPage>();
             tabButtons = new List<TabButtonCustom>();
-            lblFullName.Text = FormHandler.UserInfo.FullName;
-            welcomeTab = new TabPage("Welcome");
-            frmWelcome frm = new frmWelcome();
-            frm.TopLevel = false;
-            frm.Dock = DockStyle.Fill;
-            welcomeTab.Controls.Add(frm);
-            frm.Show();
-            tabPage.TabPages.Add(welcomeTab);
+            lblFullName.Text = FormHandler.UserInfo != null 
+                ? FormHandler.UserInfo.FullName 
+                : SystemInformation.ComputerName+"\\"+SystemInformation.UserName;
+            
+            //frmWelcome frm = new frmWelcome();
+            //tabControl1.
+            //frm.TopLevel = false;
+            //frm.Dock = DockStyle.Fill;
+            //welcomeTab.Controls.Add(frm);
+            //frm.Show();
+            //tabPage.TabPages.Add(welcomeTab);
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Rectangle rc = new Rectangle(ClientSize.Width - cGrip, ClientSize.Height - cGrip, cGrip, cGrip);
-            ControlPaint.DrawSizeGrip(e.Graphics, BackColor, rc);
-            rc = new Rectangle(0, 0, ClientSize.Width, cCaption);
-            e.Graphics.FillRectangle(Brushes.DarkBlue, rc);
+            //Rectangle rc = new Rectangle(ClientSize.Width - cGrip, ClientSize.Height - cGrip, cGrip, cGrip);
+            //ControlPaint.DrawSizeGrip(e.Graphics, BackColor, rc);
+            //rc = new Rectangle(0, 0, ClientSize.Width, cCaption);
+            //e.Graphics.FillRectangle(Brushes.DarkBlue, rc);
         }
 
         protected override void WndProc(ref Message m)
@@ -116,14 +119,14 @@ namespace QLBH
 
         private void lblFullName_Paint(object sender, PaintEventArgs e)
         {
-            Point p = new Point(btnLogout.Location.X - lblFullName.Width - 5, lblFullName.Location.Y);
-            lblFullName.Location = p;
+            //Point p = new Point(btnLogout.Location.X - lblFullName.Width - 5, lblFullName.Location.Y);
+            //lblFullName.Location = p;
         }
 
         private void btnSettings_Paint(object sender, PaintEventArgs e)
         {
-            Point p = new Point(lblFullName.Location.X - btnSettings.Width - 5, btnSettings.Location.Y);
-            btnSettings.Location = p;
+            //Point p = new Point(lblFullName.Location.X - btnSettings.Width - 5, btnSettings.Location.Y);
+            //btnSettings.Location = p;
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -135,7 +138,7 @@ namespace QLBH
         {
             isToggleBar = !isToggleBar;
             int width = isToggleBar ? LBAR_MIN_WIDTH : LBAR_MAX_WIDTH;
-            pnlLeftBar.Width = width;
+            //pnlLeftBar.Width = width;
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
@@ -151,43 +154,42 @@ namespace QLBH
 
         private void btnGeneral_Click(object sender, EventArgs e)
         {
-            tabIndex = 0;
-            frmGeneral frm = new frmGeneral();
-            AddTabPage(tabIndex, "Tổng quan", frm);
+            //tabIndex = 0;
+            //frmGeneral frm = new frmGeneral();
+            //AddTabPage(tabIndex, "Tổng quan", frm);
         }
 
         private void btnCelebration_Click(object sender, EventArgs e)
         {
-            tabIndex = 1;
+            //tabIndex = 1;
             frmCelebration frm = new frmCelebration();
-            AddTabPage(tabIndex, "Tổ chức", frm);
+            //AddTabPage(tabIndex, "Tổ chức", frm);
+            frm.Show(this);
         }
 
         private void btnCooperation_Click(object sender, EventArgs e)
         {
-            tabIndex = 2;
+            //tabIndex = 2;
+            //frmCooperation frm = new frmCooperation();
+            //AddTabPage(tabIndex, "Đối tác", frm);
             frmCooperation frm = new frmCooperation();
-            AddTabPage(tabIndex, "Đối tác", frm);
+            frm.Show(this);
         }
 
         private void btnGoods_Click(object sender, EventArgs e)
         {
             tabIndex = 3;
             frmGoods frm = new frmGoods();
-            AddTabPage(tabIndex, "Hàng hoá", frm);
+            //AddTabPage(tabIndex, "Hàng hoá", frm);
+            frm.Show(this);
         }
         private void btnReport_Click(object sender, EventArgs e)
         {
-            tabIndex = 4;
-            frmReport frm = new frmReport();
-            AddTabPage(tabIndex, "Báo cáo", frm);
+            //tabIndex = 4;
+            //frmReport frm = new frmReport();
+            //AddTabPage(tabIndex, "Báo cáo", frm);
         }
-        private void btnGoodsIE_Click(object sender, EventArgs e)
-        {
-            tabIndex = 5;
-            frmGoodsIE frm = new frmGoodsIE();
-            AddTabPage(tabIndex, "Nhập-xuất hàng", frm);
-        }
+       
 
         /// <summary>
         /// 
@@ -199,24 +201,23 @@ namespace QLBH
         {
             if (IsTabExist(tabIndex))
             {
-                MessageBox.Show(Const.GetMessageByCode("M01"), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                tabPage.SelectedTab = (TabPage)tpList[tabIndex];
+                //tabPage.SelectedTab = tpList[tabIndex];
                 TabSelectedIndexChanged();
                 return;
             }
-            if (tabPage.TabPages.Contains(welcomeTab))
-            {
-                tabPage.TabPages.Remove(welcomeTab);
-            }
+            //if (tabPage.TabPages.Contains(welcomeTab))
+            //{
+            //    tabPage.TabPages.Remove(welcomeTab);
+            //}
             TabPage tp = new TabPage(title);
             frm.TopLevel = false;
             tp.Controls.Add(frm);
-            tabPage.TabPages.Add(tp);
+            //tabPage.TabPages.Add(tp);
             frm.Dock= DockStyle.Fill;
             frm.Show();
             tpList.Add(key, tp);
             DrawTabPage();
-            tabPage.SelectedTab = tp;
+            //tabPage.SelectedTab = tp;
         }
 
         /// <summary>
@@ -224,7 +225,7 @@ namespace QLBH
         /// </summary>
         void DrawTabPage()
         {
-            flowTool.Controls.Clear();
+            //flowTool.Controls.Clear();
             TabButtonCustom oldTab = new TabButtonCustom()
             {
                 Location = new Point(5, 8),
@@ -245,7 +246,7 @@ namespace QLBH
                 };
                 tab.CloseClick += Tab_CloseClick;
                 tab.Clicked += Tab_Clicked;
-                flowTool.Controls.Add(tab);
+                //flowTool.Controls.Add(tab);
                 tabButtons.Add(tab);
                 oldTab = tab;
             }            
@@ -258,7 +259,7 @@ namespace QLBH
             TabPage tp = tbtn.Tag is TabPage page ? page : null;
             if(tp != null)
             {
-                tabPage.SelectedTab = tp;
+                //tabPage.SelectedTab = tp;
             }
             TabSelectedIndexChanged();
         }
@@ -280,8 +281,8 @@ namespace QLBH
         /// <param name="tbc"></param>
         private void RemoveTabPage(TabPage tp, TabButtonCustom tbc)
         {
-            tabPage.TabPages.Remove(tp);
-            flowTool.Controls.Remove(tbc);
+            //tabPage.TabPages.Remove(tp);
+            //flowTool.Controls.Remove(tbc);
             tabButtons.Remove(tbc);
             tpList.Remove(tbc.Index);
             DrawTabPage();
@@ -317,8 +318,8 @@ namespace QLBH
 
         private void btnBackup_Paint(object sender, PaintEventArgs e)
         {
-            Point p = new Point(btnSettings.Location.X - this.btnBackup.Width - 5, btnBackup.Location.Y);
-            btnBackup.Location = p;
+            //Point p = new Point(btnSettings.Location.X - this.btnBackup.Width - 5, btnBackup.Location.Y);
+            //btnBackup.Location = p;
         }
 
         private void btnBackup_Click(object sender, EventArgs e)
@@ -357,15 +358,37 @@ namespace QLBH
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             //Tắt hoàn toàn chương trình
-            DialogResult dialog = MessageBox.Show(Const.GetMessageByCode("M02"), "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (dialog == DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-            else
-            {
-                FormHandler.frmLogin.Dispose();
-            }
+            //DialogResult dialog = MessageBox.Show(Const.GetMessageByCode("M02"), "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //if (dialog == DialogResult.No)
+            //{
+            //    e.Cancel = true;
+            //}
+            //else
+            //{
+            //    FormHandler.frmLogin.Dispose();
+            //}
+            FormHandler.frmLogin.Dispose();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Parameter.frmAbout.Focus();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Parameter.frmSettings.Focus();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnInExGoods_Click(object sender, EventArgs e)
+        {
+            frmGoodsIE frm = new frmGoodsIE();
+            frm.Show(this);
         }
     }
 }

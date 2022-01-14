@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,40 +10,43 @@ using System.Windows.Forms;
 
 namespace QLBH.Resources
 {
-    public class TabControlCustom : TabControl
+    public partial class TabControlCustom : UserControl
     {
+        List<Panel> panls = new List<Panel>();
+        List<Button> btns = new List<Button>();
         public TabControlCustom()
         {
-            this.DrawMode = TabDrawMode.OwnerDrawFixed;
+            InitializeComponent();
+            panls.Clear();
+            btns.Clear();
+            DrawTabButton();
         }
 
-        protected override void OnPaint(PaintEventArgs e)
+        public void AddControl(Form frm, string title)
         {
-            base.OnPaint(e);
+            Panel pn = new Panel();
+            pn.Dock = DockStyle.Fill;
+            frm.TopLevel = false;
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+            pn.Controls.Add(frm);
+            panel1.Controls.Add(pn);
+            panls.Add(pn);
         }
 
-        protected override void OnDrawItem(DrawItemEventArgs e)
+        private void DrawTabButton()
         {
-            base.OnDrawItem(e);
-            if (this.SelectedTab == this.TabPages[e.Index])
-            {
-                e.Graphics.FillEllipse(new SolidBrush(Color.White), e.Bounds);
-            }
-            else
-            {
-                e.Graphics.FillEllipse(new SolidBrush(Color.LightGray), e.Bounds);
-            }
-
-            this.TabPages[e.Index].BorderStyle = BorderStyle.FixedSingle;
-            this.TabPages[e.Index].ForeColor = Color.Black;
-
-            Rectangle paddedBounds = e.Bounds;
-            paddedBounds.Inflate(-1, -1);
-
-            e.Graphics.DrawString(this.TabPages[e.Index].Text, this.Font, SystemBrushes.WindowText, paddedBounds);
+            
         }
 
-        
-        
+        private void DrawTabPage()
+        {
+            
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
@@ -22,6 +23,21 @@ namespace DAL
             catch(Exception e)
             {
                 return null;
+                throw e;
+            }
+        }
+
+        public int Update(Employee info) 
+        {
+            try
+            {
+                //DataProvider.Instance.Update()
+                return 1;
+
+            }
+            catch(Exception e)
+            {
+                return -1;
                 throw e;
             }
         }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLBH.Pages.Celebration;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,18 @@ namespace QLBH.Pages
         {
             InitializeComponent();
             //reportDocument1.
+            //DoubleBuffered = true;
+            //SetStyle(ControlStyles.ResizeRedraw, false);
+            SetTabContent();
+        }
+
+        void SetTabContent()
+        {
+            frmEmployee frmEmp = new frmEmployee();
+            frmEmp.TopLevel = false;
+            frmEmp.Dock = DockStyle.Fill;
+            frmEmp.Show();
+            tbpEmployee.Controls.Add(frmEmp);
         }
     }
 }

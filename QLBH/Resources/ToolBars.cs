@@ -16,31 +16,31 @@ namespace QLBH.Resources
         public string TextT1
         {
             get => btnAdd.Text;
-            set { btnAdd.Text = value; }
+            set { btnAdd.Text = value; Invalidate(); }
         }
         [Category("Button 2"), Description("Không có mô tả"), DisplayName("Text")]
         public string TextT2
         {
             get => btnEdit.Text; 
-            set { btnEdit.Text = value; }
+            set { btnEdit.Text = value; Invalidate(); }
         }
         [Category("Button 3"), Description("Không có mô tả"), DisplayName("Text")]
         public string TextT3
         {
             get => btnDelete.Text; 
-            set { btnDelete.Text = value; }
+            set { btnDelete.Text = value; Invalidate(); }
         }
         [Category("Button 4"), Description("Không có mô tả"), DisplayName("Text")]
         public string TextT4
         {
             get => btnPrint.Text; 
-            set { btnPrint.Text = value; }
+            set { btnPrint.Text = value; Invalidate(); }
         }
         [Category("Button 5"), Description("Không có mô tả"), DisplayName("Text")]
         public string TextT5
         {
            get => btnExcelExport.Text; 
-            set { btnExcelExport.Text = value; }
+            set { btnExcelExport.Text = value; Invalidate(); }
         }
         /// <summary>
         /// Button Background
@@ -52,6 +52,7 @@ namespace QLBH.Resources
             set
             {
                 btnAdd.BackColor = value;
+                Invalidate();
             }
         }
         [Category("Button 2"), Description("Không có mô tả"), DisplayName("Background Color")]
@@ -61,6 +62,7 @@ namespace QLBH.Resources
             set
             {
                 btnEdit.BackColor = value;
+                Invalidate();
             }
         }
         [Category("Button 3"), Description("Không có mô tả"), DisplayName("Background Color")]
@@ -70,6 +72,7 @@ namespace QLBH.Resources
             set
             {
                 btnDelete.BackColor = value;
+                Invalidate();
             }
         }
         [Category("Button 4"), Description("Không có mô tả"), DisplayName("Background Color")]
@@ -79,6 +82,7 @@ namespace QLBH.Resources
             set
             {
                 btnPrint.BackColor = value;
+                Invalidate();
             }
         }
         [Category("Button 5"), Description("Không có mô tả"), DisplayName("Background Color")]
@@ -88,6 +92,7 @@ namespace QLBH.Resources
             set
             {
                 btnExcelExport.BackColor = value;
+                Invalidate();
             }
         }
         /// <summary>
@@ -100,6 +105,7 @@ namespace QLBH.Resources
             set
             {
                 btnAdd.ForeColor = value;
+                Invalidate();
             }
         }
         [Category("Button 2"), Description("Không có mô tả"), DisplayName("Foreground Color")]
@@ -109,6 +115,7 @@ namespace QLBH.Resources
             set
             {
                 btnEdit.ForeColor = value;
+                Invalidate();
             }
         }
         [Category("Button 3"), Description("Không có mô tả"), DisplayName("Foreground Color")]
@@ -118,6 +125,7 @@ namespace QLBH.Resources
             set
             {
                 btnDelete.ForeColor = value;
+                Invalidate();
             }
         }
         [Category("Button 4"), Description("Không có mô tả"), DisplayName("Foreground Color")]
@@ -127,6 +135,7 @@ namespace QLBH.Resources
             set
             {
                 btnPrint.ForeColor = value;
+                Invalidate();
             }
         }
         [Category("Button 5"), Description("Không có mô tả"), DisplayName("Foreground Color")]
@@ -136,6 +145,7 @@ namespace QLBH.Resources
             set
             {
                 btnExcelExport.ForeColor = value;
+                Invalidate();
             }
         }
         /// <summary>
@@ -148,15 +158,17 @@ namespace QLBH.Resources
             set
             {
                 btnAdd.Enabled = value;
+                Invalidate();
             }
         }
         [Category("Button 2"), Description("Không có mô tả"), DisplayName("Enabled")]
         public bool EnableT2
         {
-            get => btnAdd.Enabled;
+            get => btnEdit.Enabled;
             set
             {
                 btnEdit.Enabled = value;
+                Invalidate();
             }
         }
         [Category("Button 3"), Description("Không có mô tả"), DisplayName("Enabled")]
@@ -166,6 +178,7 @@ namespace QLBH.Resources
             set
             {
                 btnDelete.Enabled = value;
+                Invalidate();
             }
         }
         [Category("Button 4"), Description("Không có mô tả"), DisplayName("Enabled")]
@@ -175,6 +188,7 @@ namespace QLBH.Resources
             set
             {
                 btnPrint.Enabled = value;
+                Invalidate();
             }
         }
         [Category("Button 5"), Description("Không có mô tả"), DisplayName("Enabled")]
@@ -184,6 +198,7 @@ namespace QLBH.Resources
             set
             {
                 btnExcelExport.Enabled = value;
+                Invalidate();
             }
         }
         /// <summary>
@@ -203,6 +218,7 @@ namespace QLBH.Resources
                 {
                     btnAdd.Image = value;
                 }
+                Invalidate();
             }
         }
         [Category("Button 2"), Description("Không có mô tả"), DisplayName("Icon")]
@@ -219,6 +235,7 @@ namespace QLBH.Resources
                 {
                     btnEdit.Image = value;
                 }
+                Invalidate();
             }
         }
         [Category("Button 3"), Description("Không có mô tả"), DisplayName("Icon")]
@@ -235,6 +252,7 @@ namespace QLBH.Resources
                 {
                     btnDelete.Image = value;
                 }
+                Invalidate();
             }
         }
         [Category("Button 4"), Description("Không có mô tả"), DisplayName("Icon")]
@@ -251,6 +269,7 @@ namespace QLBH.Resources
                 {
                     btnPrint.Image = value;
                 }
+                Invalidate();
             }
         }
         [Category("Button 5"), Description("Không có mô tả"), DisplayName("Icon")]
@@ -267,6 +286,7 @@ namespace QLBH.Resources
                 {
                     btnExcelExport.Image = value;
                 }
+                Invalidate();
             }
         }
         #endregion
@@ -318,42 +338,27 @@ namespace QLBH.Resources
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if(buttonClick != null)
-            {
-                buttonClick(sender, GetEvent(sender));
-            }
+            buttonClick?.Invoke(sender, GetEvent(sender));
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (buttonClick != null)
-            {
-                buttonClick(sender, GetEvent(sender));
-            }
+            buttonClick?.Invoke(sender, GetEvent(sender));
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (buttonClick != null)
-            {
-                buttonClick(sender, GetEvent(sender));
-            }
+            buttonClick?.Invoke(sender, GetEvent(sender));
         }
 
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            if (buttonClick != null)
-            {
-                buttonClick(sender, GetEvent(sender));
-            }
+            buttonClick?.Invoke(sender, GetEvent(sender));
         }
 
         private void btnExcelExport_Click(object sender, EventArgs e)
         {
-            if (buttonClick != null)
-            {
-                buttonClick(sender, GetEvent(sender));
-            }
+            buttonClick?.Invoke(sender, GetEvent(sender));
         }
     }
 }

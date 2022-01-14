@@ -16,19 +16,19 @@ namespace QLBH.Pages
 {
     public partial class frmReportViewer : Form
     {
-        const string DEFAULT_PATH = "Reports/";
+        const string DEFAULT_PATH = "Reports\\";
+        DataTable dt;
         //public string FileName { get; set; }
-        public frmReportViewer(string fileName)
+        public frmReportViewer(string fileName, DataTable dt)
         {
             InitializeComponent();
-            string fName = DEFAULT_PATH + fileName;
+            string fName = DEFAULT_PATH+fileName;
             try
             {
                 if (File.Exists(fName))
                 {
                     ReportDocument report = new ReportDocument();
                     report.Load(fName);
-                    DataTable dt = BrandDAL.GetBrandList();
                     report.SetDataSource(dt);
                     crystalReportViewer1.ReportSource = report;
                     crystalReportViewer1.RefreshReport();
@@ -45,5 +45,7 @@ namespace QLBH.Pages
             }
 
         }
+
+        
     }
 }

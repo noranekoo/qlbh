@@ -19,7 +19,7 @@ namespace QLBH
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDepart());
+            Application.Run(new frmCelebration());
         }
     }
 }

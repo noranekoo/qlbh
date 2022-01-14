@@ -24,8 +24,6 @@ namespace QLBH
         {
             FormHandler.frmLogin = this;
             _user = $"{SystemInformation.UserDomainName}\\{SystemInformation.UserName}";
-            
-            
             InitializeComponent();
             lblUser.Text = _user;
 
@@ -83,6 +81,7 @@ namespace QLBH
         {
             try
             {
+                
                 return UserDAL.Instance.GetSession(_user);
             }
             catch (Exception e)
@@ -127,15 +126,13 @@ namespace QLBH
             {
                 Hide();
                 FormHandler.UserInfo = UserDAL.Instance.GetUser(_user);
-                FormHandler.UserInfo.FullName = !string.IsNullOrEmpty(FormHandler.UserInfo.FullName) ? FormHandler.UserInfo.FullName : SystemInformation.UserName;
+                FormHandler.UserInfo.FullName = !string.IsNullOrEmpty(FormHandler.UserInfo.FullName) ?
+                    FormHandler.UserInfo.FullName : SystemInformation.UserName;
                 frmMain frm = new frmMain();
                 frm.Show(this);
             }
             else
             {
-
-
-                //FormHandler.UserInfo = null;
             }
         }
     }
