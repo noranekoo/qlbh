@@ -13,18 +13,204 @@ namespace DAL
         {
             
         }
-
-        public bool IsExistUser(User user)
+        public static UserDAL Instance { get; set; } = new UserDAL();
+        public static bool IsExistUser(User user)
         {
-            string sql = DataProvider.JoinSQL(Const.GET_USER, "WHERE TenDangNhap=@user AND MatKhau=@pass");
-            OleDbParameter [] param = 
+            return GetUser(user) != null;
+        }
+
+        public UserInfo GetUser(string userName)
+        {
+            try
+            {
+                OleDbParameter[] param =
+                {
+                    new OleDbParameter("user", userName),
+                };
+                DataTable dt = DataProvider.Instance.SelectData("NguoiDung", param, "*", "TenDangNhap=@user");
+                int count = dt.Rows.Count;
+                if (count > 0)
+                {
+                    string pwd = dt.Rows[0]["MatKhau"].ToString();
+                    User user = new User(userName, pwd);
+                    UserInfo info = new UserInfo()
+                    {
+                        Info = user,
+                        FullName = dt.Rows[0]["HoTen"].ToString(),
+                        Email = dt.Rows[0]["Email"].ToString(),
+                        Phone = dt.Rows[0]["SDT"].ToString(),
+                        Address = dt.Rows[0]["DiaChi"].ToString()
+                    };
+                    return info;
+                }
+            }
+            catch (Exception e)
+            {
+                throw e.InnerException;
+            }
+
+            return null;
+        }
+        /// <summary>
+        /// Lấy thông tin người dùng
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public static UserInfo GetUser(User user)
+        {
+            try
+            {
+                OleDbParameter[] param =
+                {
+                    new OleDbParameter("user", user.UserName),
+                };
+                DataTable dt = DataProvider.Instance.SelectData("NguoiDung", param,"*", "TenDangNhap=@user");
+                int count = dt.Rows.Count;
+                if (count > 0)
+                {
+                    string pwd = dt.Rows[0]["MatKhau"].ToString();
+                    bool isMatchPass = Encrypto.SHACheck(user.Password, pwd);
+                    if (isMatchPass)
+                    {
+                        UserInfo info = new UserInfo()
+                        {
+                            Info = user,
+                            FullName = dt.Rows[0]["HoTen"].ToString(),
+                            Email = dt.Rows[0]["Email"].ToString(),
+                            Phone = dt.Rows[0]["SDT"].ToString(),
+                            Address = dt.Rows[0]["DiaChi"].ToString()
+                        };
+                        return info;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                throw e.InnerException;
+            }
+
+            return null;
+        }
+        /// <summary>
+        /// Thêm người dùng mới
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        public static int AddUser(User user)
+        {
+            if (IsExistUser(user))
+            {
+                return -1;
+            }
+            string pwd = Encrypto.SHAHash(user.Password);
+            OleDbParameter[] param =
             {
                 new OleDbParameter("user", user.UserName),
-                new OleDbParameter("pass", user.Password),
+                new OleDbParameter("pass", pwd),
             };
-            DataTable dt = DataProvider.GetInstance().GetData(sql, param);
-            int count = dt.Rows.Count;
-            return count > 0;
+            return 0;
+            //return DataProvider.GetInstance().UpdateData("NguoiDung", param, "C", "TenDangNhap,MatKhau");
+        }
+        
+        public int SaveSession(User user, bool isDelete)
+        {
+            string dt = !isDelete
+                ? DateTime.Now.AddDays(1).ToString("dd/MM/yyyy")
+                : DateTime.Now.AddDays(-1).ToString("dd/MM/yyyy");
+            OleDbParameter[] pa = new
+                OleDbParameter[1]
+            {
+                new OleDbParameter("userId",user.UserName),
+            };
+            OleDbParameter[] pa2 = new
+                OleDbParameter[0];
+            try
+            {
+                int dltResult = DataProvider.Instance.Delete("Sessions", pa2, "1=1");
+                if (dltResult != -1)
+                {
+                    return DataProvider.Instance.Insert("Sessions", pa, "UserID, Exp", $"@userId,\'{dt}\'");
+                }
+            }
+            catch(Exception e)
+            {
+                return -1;
+            }
+
+            return -1;
+        }
+
+        public bool GetSession(string userName)
+        {
+            OleDbParameter[] pa = new OleDbParameter[1]
+            {
+                new OleDbParameter("userName", userName)
+            };
+            try
+            {
+                DataTable dt = DataProvider.Instance.SelectData("Sessions", pa, "*", $"UserID=@userName");
+                if(dt!= null)
+                {
+                    if (dt.Rows.Count > 0)
+                    {
+                        DateTime exp = DateTime.Parse(dt.Rows[0]["Exp"].ToString());
+
+                        return exp.Ticks > DateTime.Now.Ticks;
+                    }
+                }
+                return false;
+            }
+            catch (Exception e)
+            {
+                return false;
+                throw e.InnerException;
+            }
+        }
+
+        /// <summary>
+        /// Thay đổi thông tin
+        /// </summary>
+        /// <param name="uInfo"></param>
+        /// <returns></returns>
+        public static bool ChangeInfo(UserInfo uInfo)
+        {
+            try
+            {
+                
+            }
+            catch (Exception e)
+            {
+                throw e.InnerException;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Thay đổi thông tin
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="uInfo"></param>
+        /// <returns></returns>
+        public static bool ChangeInfo(User user, UserInfo uInfo)
+        {
+            try
+            {
+                UserInfo oldInfo = GetUser(user);
+                if (oldInfo != null)
+                {
+                    if (user.Password.Equals(uInfo.Info.Password))
+                    {
+
+                        return true;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+
+                throw e.InnerException;
+            }
+            return false;
         }
     }
 }

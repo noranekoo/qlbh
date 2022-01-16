@@ -1,0 +1,10 @@
+E:\DEVDIR\C#\QLBH\DataSeeder\bin\Release\DataSeeder.exe
+E:\DEVDIR\C#\QLBH\DataSeeder\bin\Release\DataSeeder.pdb
+E:\DEVDIR\C#\QLBH\DataSeeder\bin\Release\DAL.dll
+E:\DEVDIR\C#\QLBH\DataSeeder\bin\Release\DTO.dll
+E:\DEVDIR\C#\QLBH\DataSeeder\bin\Release\DAL.pdb
+E:\DEVDIR\C#\QLBH\DataSeeder\bin\Release\DTO.pdb
+E:\DEVDIR\C#\QLBH\DataSeeder\obj\Release\DataSeeder.csproj.CoreCompileInputs.cache
+E:\DEVDIR\C#\QLBH\DataSeeder\obj\Release\DataSeeder.csproj.CopyComplete
+E:\DEVDIR\C#\QLBH\DataSeeder\obj\Release\DataSeeder.exe
+E:\DEVDIR\C#\QLBH\DataSeeder\obj\Release\DataSeeder.pdb
