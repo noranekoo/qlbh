@@ -37,6 +37,8 @@ namespace QLBH
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.grbContainer = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ckbShowPassword = new System.Windows.Forms.CheckBox();
             this.ckbSaveSession = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -91,7 +93,7 @@ namespace QLBH
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(54, 64);
+            this.txtPassword.Location = new System.Drawing.Point(54, 87);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(249, 27);
             this.txtPassword.TabIndex = 10;
@@ -108,7 +110,7 @@ namespace QLBH
             this.btnLogin.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btnLogin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Location = new System.Drawing.Point(303, 63);
+            this.btnLogin.Location = new System.Drawing.Point(303, 86);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(47, 29);
             this.btnLogin.TabIndex = 11;
@@ -122,6 +124,8 @@ namespace QLBH
             // 
             this.grbContainer.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.grbContainer.BackColor = System.Drawing.SystemColors.Control;
+            this.grbContainer.Controls.Add(this.label4);
+            this.grbContainer.Controls.Add(this.ckbShowPassword);
             this.grbContainer.Controls.Add(this.ckbSaveSession);
             this.grbContainer.Controls.Add(this.btnLogin);
             this.grbContainer.Controls.Add(this.label1);
@@ -129,14 +133,36 @@ namespace QLBH
             this.grbContainer.Controls.Add(this.lblUser);
             this.grbContainer.Location = new System.Drawing.Point(12, 108);
             this.grbContainer.Name = "grbContainer";
-            this.grbContainer.Size = new System.Drawing.Size(393, 132);
+            this.grbContainer.Size = new System.Drawing.Size(393, 152);
             this.grbContainer.TabIndex = 12;
             this.grbContainer.TabStop = false;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(149, 64);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(73, 20);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Mật khẩu:";
+            // 
+            // ckbShowPassword
+            // 
+            this.ckbShowPassword.AutoSize = true;
+            this.ckbShowPassword.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ckbShowPassword.Location = new System.Drawing.Point(190, 120);
+            this.ckbShowPassword.Name = "ckbShowPassword";
+            this.ckbShowPassword.Size = new System.Drawing.Size(127, 24);
+            this.ckbShowPassword.TabIndex = 12;
+            this.ckbShowPassword.Text = "Hiện mật khẩu";
+            this.ckbShowPassword.UseVisualStyleBackColor = true;
+            this.ckbShowPassword.CheckedChanged += new System.EventHandler(this.ckbShowPassword_CheckedChanged);
             // 
             // ckbSaveSession
             // 
             this.ckbSaveSession.AutoSize = true;
-            this.ckbSaveSession.Location = new System.Drawing.Point(54, 97);
+            this.ckbSaveSession.Font = new System.Drawing.Font("Segoe UI", 8.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.ckbSaveSession.Location = new System.Drawing.Point(54, 120);
             this.ckbSaveSession.Name = "ckbSaveSession";
             this.ckbSaveSession.Size = new System.Drawing.Size(130, 24);
             this.ckbSaveSession.TabIndex = 12;
@@ -151,9 +177,9 @@ namespace QLBH
             this.label2.ForeColor = System.Drawing.Color.Crimson;
             this.label2.Location = new System.Drawing.Point(190, 68);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(163, 37);
+            this.label2.Size = new System.Drawing.Size(161, 37);
             this.label2.TabIndex = 7;
-            this.label2.Text = "KHO HÀNG";
+            this.label2.Text = "BÁN HÀNG";
             // 
             // frmLogin
             // 
@@ -161,7 +187,7 @@ namespace QLBH
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(415, 252);
+            this.ClientSize = new System.Drawing.Size(415, 270);
             this.Controls.Add(this.grbContainer);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
@@ -171,6 +197,7 @@ namespace QLBH
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "frmLogin";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Đăng nhập";
             this.Load += new System.EventHandler(this.frmLogin_Load);
@@ -193,6 +220,8 @@ namespace QLBH
         private System.Windows.Forms.GroupBox grbContainer;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.CheckBox ckbSaveSession;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.CheckBox ckbShowPassword;
     }
 }
 

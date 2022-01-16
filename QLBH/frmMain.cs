@@ -14,7 +14,7 @@ namespace QLBH
         private readonly List<TabButtonCustom> tabButtons = null;
         private readonly Dictionary<int, TabPage> tpList = null;
 
-        private TabPage welcomeTab;
+        //private TabPage welcomeTab;
         private int tabIndex = 0;
 
         private bool isReadyMove = false;

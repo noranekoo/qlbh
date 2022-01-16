@@ -27,6 +27,7 @@ namespace QLBH.Pages.Celebration.Employees
             lblPhone.Text = _employeeInfo.Phone;
             lblEmail.Text = _employeeInfo.Email;
             lblDepart.Text = _employeeInfo.DepartName;
+            picAvatar.Image = _employeeInfo.Avatar;
         }
 
         

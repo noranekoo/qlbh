@@ -113,32 +113,32 @@
   <ItemGroup>
     <Reference Include="CrystalDecisions.CrystalReports.Design, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+    <Reference Include="CrystalDecisions.ReportAppServer.ClientDoc, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="CrystalDecisions.ReportAppServer.CommLayer, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+    <Reference Include="CrystalDecisions.ReportAppServer.CommLayer, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="CrystalDecisions.ReportAppServer.CommonControls, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonControls, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+    <Reference Include="CrystalDecisions.ReportAppServer.CommonObjectModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+    <Reference Include="CrystalDecisions.ReportAppServer.Controllers, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="CrystalDecisions.ReportAppServer.CubeDefModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+    <Reference Include="CrystalDecisions.ReportAppServer.CubeDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+    <Reference Include="CrystalDecisions.ReportAppServer.DataDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="CrystalDecisions.ReportAppServer.DataSetConversion, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportAppServer.ReportDefModel, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+    <Reference Include="CrystalDecisions.ReportAppServer.ReportDefModel, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
-    <Reference Include="CrystalDecisions.ReportAppServer.XmlSerialize, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
+    <Reference Include="CrystalDecisions.ReportAppServer.XmlSerialize, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
@@ -186,11 +186,29 @@
     <Compile Include="frmAbout.Designer.cs">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMain2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain2.Designer.cs">
+      <DependentUpon>frmMain2.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmTesting.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmTesting.Designer.cs">
       <DependentUpon>frmTesting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Celebration\Employees\frmEmpDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Celebration\Employees\frmEmpDetail.Designer.cs">
+      <DependentUpon>frmEmpDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Celebration\Employees\frmEmpUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Celebration\Employees\frmEmpUpdate.Designer.cs">
+      <DependentUpon>frmEmpUpdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\Celebration\frmDepart.cs">
       <SubType>Form</SubType>
@@ -203,6 +221,12 @@
     </Compile>
     <Compile Include="Pages\Celebration\frmEmployee.Designer.cs">
       <DependentUpon>frmEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Cooperation\frmCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Cooperation\frmCustomer.Designer.cs">
+      <DependentUpon>frmCustomer.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\frmBackupData.cs">
       <SubType>Form</SubType>
@@ -291,7 +315,7 @@
     <Compile Include="Parameter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
+    <Compile Include="Properties\Resources1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -301,6 +325,21 @@
     </Compile>
     <Compile Include="Resources\Const.cs" />
     <Compile Include="Resources\CustomEventHandler.cs" />
+    <Compile Include="Resources\DataGridViewCustom.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Resources\EmployeeDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Resources\EmployeeDetail.Designer.cs">
+      <DependentUpon>EmployeeDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ExplainArea.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Resources\ExplainArea.Designer.cs">
+      <DependentUpon>ExplainArea.cs</DependentUpon>
+    </Compile>
     <Compile Include="Resources\FormHandler.cs" />
     <Compile Include="Reports\PhieuXuat.cs">
       <AutoGen>True</AutoGen>
@@ -308,6 +347,7 @@
       <DependentUpon>PhieuXuat.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Resources\QLBHLogger.cs" />
     <Compile Include="Resources\TabButtonCustom.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -315,7 +355,10 @@
       <DependentUpon>TabButtonCustom.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\TabControlCustom.cs">
-      <SubType>Component</SubType>
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Resources\TabControlCustom.Designer.cs">
+      <DependentUpon>TabControlCustom.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\ToolBars.cs">
       <SubType>UserControl</SubType>
@@ -334,14 +377,26 @@
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMain2.resx">
+      <DependentUpon>frmMain2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmTesting.resx">
       <DependentUpon>frmTesting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Celebration\Employees\frmEmpDetail.resx">
+      <DependentUpon>frmEmpDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Celebration\Employees\frmEmpUpdate.resx">
+      <DependentUpon>frmEmpUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Celebration\frmDepart.resx">
       <DependentUpon>frmDepart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Celebration\frmEmployee.resx">
       <DependentUpon>frmEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Cooperation\frmCustomer.resx">
+      <DependentUpon>frmCustomer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\frmBackupData.resx">
       <DependentUpon>frmBackupData.cs</DependentUpon>
@@ -388,6 +443,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Database\DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
@@ -400,12 +456,28 @@
     <None Include="Database\DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
+    <None Include="Properties\DataSources\DTO.Const.datasource" />
+    <None Include="Properties\DataSources\DTO.Employee.datasource" />
+    <None Include="Properties\DataSources\DTO.GoodsType.datasource" />
+    <None Include="Properties\DataSources\DTO.Supplier.datasource" />
+    <None Include="Properties\DataSources\DTO.Unit.datasource" />
+    <None Include="Properties\DataSources\DTO.User.datasource" />
+    <None Include="Properties\DataSources\DTO.UserInfo.datasource" />
     <None Include="Reports\PhieuXuat.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>PhieuXuat.cs</LastGenOutput>
     </None>
+    <EmbeddedResource Include="Resources\EmployeeDetail.resx">
+      <DependentUpon>EmployeeDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ExplainArea.resx">
+      <DependentUpon>ExplainArea.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\TabButtonCustom.resx">
       <DependentUpon>TabButtonCustom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\TabControlCustom.resx">
+      <DependentUpon>TabControlCustom.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\ToolBars.resx">
       <DependentUpon>ToolBars.cs</DependentUpon>
@@ -474,6 +546,7 @@
     <None Include="bin\Debug\images\information.png" />
     <None Include="bin\Debug\images\search.png" />
     <None Include="bin\Debug\images\boy.png" />
+    <None Include="bin\Debug\images\department.png" />
     <Content Include="qlbh_icon.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -483,9 +556,7 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\Cooperation\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>

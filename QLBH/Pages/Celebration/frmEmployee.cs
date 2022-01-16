@@ -26,10 +26,6 @@ namespace QLBH.Pages.Celebration
         #region メソッド処理
         #endregion
 
-        /// <summary>
-        /// フィルター制御の配列
-        /// </summary>
-        readonly CheckBox[] ctrlCheckFilter;
         DataTable dtFull, dtShow;
         Bitmap defaultAvt = Properties.Resources.boy;
         int currentRow = 0;

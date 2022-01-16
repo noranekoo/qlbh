@@ -112,7 +112,7 @@ namespace QLBH
 
         private void ckbSaveSession_CheckedChanged(object sender, EventArgs e)
         {
-
+           
         }
 
         private void frmLogin_Load(object sender, EventArgs e)
@@ -122,17 +122,29 @@ namespace QLBH
 
         private void frmLogin_Shown(object sender, EventArgs e)
         {
-            if (CheckSession() && IsCheckSession)
+            //if (CheckSession() && IsCheckSession)
+            //{
+            //    Hide();
+            //    FormHandler.UserInfo = UserDAL.Instance.GetUser(_user);
+            //    FormHandler.UserInfo.FullName = !string.IsNullOrEmpty(FormHandler.UserInfo.FullName) ?
+            //        FormHandler.UserInfo.FullName : SystemInformation.UserName;
+            //    frmMain frm = new frmMain();
+            //    frm.Show(this);
+            //}
+            //else
+            //{
+            //}
+        }
+
+        private void ckbShowPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ckbShowPassword.Checked)
             {
-                Hide();
-                FormHandler.UserInfo = UserDAL.Instance.GetUser(_user);
-                FormHandler.UserInfo.FullName = !string.IsNullOrEmpty(FormHandler.UserInfo.FullName) ?
-                    FormHandler.UserInfo.FullName : SystemInformation.UserName;
-                frmMain frm = new frmMain();
-                frm.Show(this);
+                txtPassword.UseSystemPasswordChar = false;
             }
             else
             {
+                txtPassword.UseSystemPasswordChar = true;
             }
         }
     }

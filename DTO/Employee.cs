@@ -11,6 +11,7 @@ namespace DTO
 {
     public class Employee
     {
+
         public int ID { get; set; }
         public string FullName { get; set; }
         public DateTime Birthday { get; set; }
@@ -20,9 +21,12 @@ namespace DTO
         public string IDNumber { get; set; }
         public DateTime JobDate {get;set;}
         public Image Avatar { get; set; }
-        public string AvatarLink { get; set; }
+        public string AvatarLink { get; set; } = "images/boy.png";
         public int DepartID { get; set; }
         public string DepartName { get; set; }
+
+        const string DEFAULT_IMG = "images/boy.png";
+
         public Employee()
         {
             FullName = "";
@@ -32,7 +36,6 @@ namespace DTO
             Email = "";
             IDNumber = "";
             JobDate = DateTime.Now;
-            AvatarLink = "images/boy.png";
             Avatar = GetAvatar(AvatarLink);
         }
 
@@ -50,6 +53,7 @@ namespace DTO
                 Birthday = DateTime.Parse(dr["NgaySinh"].ToString()),
                 JobDate = DateTime.Parse(dr["NgayNhanViec"].ToString()),
                 Avatar = GetAvatar(avatarLink),
+                AvatarLink = avatarLink,
                 DepartID = int.Parse(dr["MaBoPhan"].ToString()),
             };
         }

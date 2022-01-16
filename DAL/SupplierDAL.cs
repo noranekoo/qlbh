@@ -11,7 +11,23 @@ namespace DAL
 {
     public class SupplierDAL
     {
-        public static Supplier GetSupplier(int id)
+        public static SupplierDAL Instance { get; set; } = new SupplierDAL();
+
+        public DataTable GetSupplierList()
+        {
+            OleDbParameter[] pa = new OleDbParameter[0];
+            try
+            {
+                return DataProvider.Instance.SelectData("NhaCungCap", pa, "*");
+            }
+            catch(Exception e)
+            {
+                return null;
+                throw e;
+            }
+        }
+
+        public Supplier GetSupplier(int id)
         {
             try
             {
@@ -33,7 +49,7 @@ namespace DAL
                 throw e.InnerException;
             }
         }
-        private static Supplier ConvertToDTO(DataRow dr)
+        private Supplier ConvertToDTO(DataRow dr)
         {
             return new Supplier()
             {

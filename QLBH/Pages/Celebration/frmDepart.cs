@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QLBH.Resources;
 
 namespace QLBH.Pages.Celebration
 {
@@ -24,8 +25,10 @@ namespace QLBH.Pages.Celebration
         {
             InitializeComponent();
             dgvData.RowPrePaint += DgvData_RowPrePaint;
+            //dgvData.RowValidated += DgvData_RowValidated;
             InitLoad();
         }
+
         /// <summary>
         ///　グリッドのRowPrePaintにエベント処理
         ///　2021/12/25
@@ -40,6 +43,16 @@ namespace QLBH.Pages.Celebration
                 dgvData.Rows[e.RowIndex].Cells[0].Value = e.RowIndex + 1;
             }
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DgvData_RowValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            //rowIsValid = true;
+        }
+
         /// <summary>
         /// セーフボタンにクリック処理
         /// 2021/12/25
@@ -115,7 +128,7 @@ namespace QLBH.Pages.Celebration
             }
             dgvData.DataSource = dtShow;
         }
-
+       
         void InitLoad()
         {
             try
@@ -127,13 +140,6 @@ namespace QLBH.Pages.Celebration
                     {
                         dtShow = dtFull.Copy();
                         dgvData.DataSource = dtShow;
-                        DataGridViewTextBoxColumn dgvtb = new DataGridViewTextBoxColumn();
-                        dgvtb.HeaderText = "STT";
-                        dgvtb.Name = "Number";
-                        dgvtb.Width = 30;
-                        dgvtb.ReadOnly = true;
-
-                        dgvData.Columns.Insert(0, dgvtb);
                     }
                 }
             }

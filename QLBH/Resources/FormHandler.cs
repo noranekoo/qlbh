@@ -90,5 +90,24 @@ namespace QLBH.Resources
         {
             c.BackgroundImage = img;
         }
+        /// <summary>
+        /// タップページにフォームを追加処理
+        /// </summary>
+        /// <param name="tab"></param>
+        /// <param name="c"></param>
+        public static void SetTabContent(TabControl tab, params Form [] c)
+        {
+            if(c.Length <= tab.TabPages.Count)
+            {
+                for (int i = 0; i < c.Length; i++)
+                {
+                    c[i].FormBorderStyle = FormBorderStyle.None;
+                    c[i].TopLevel = false;
+                    c[i].Dock = DockStyle.Fill;
+                    c[i].Show();
+                    tab.TabPages[i].Controls.Add(c[i]);
+                }
+            }
+        }
     }
 }

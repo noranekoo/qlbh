@@ -41,7 +41,7 @@ namespace DAL
         private static Goods ConvertToDTO(DataRow dr)
         {
             Brand brand = BrandDAL.GetBrand(int.Parse(dr["Hang"].ToString()));
-            Supplier supplier = SupplierDAL.GetSupplier(int.Parse(dr["NhaCungCap"].ToString()));
+            Supplier supplier = SupplierDAL.Instance.GetSupplier(int.Parse(dr["NhaCungCap"].ToString()));
             GoodsType type = GoodsTypeDAL.GetGoodsType(int.Parse(dr["Nhom"].ToString()));
             Unit unit = UnitDAL.Instance.GetUnit(int.Parse(dr["DonViTinh"].ToString()));
             return new Goods()

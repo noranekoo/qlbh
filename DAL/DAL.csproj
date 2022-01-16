@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="BrandDAL.cs" />
     <Compile Include="Celebration\DepartDAL.cs" />
+    <Compile Include="CustomerDAL.cs" />
     <Compile Include="DataProvider.cs" />
     <Compile Include="DataProviderException.cs" />
     <Compile Include="EmployeeDAL.cs" />

@@ -67,7 +67,10 @@ namespace QLBH.Pages.Celebration.Employees
             richAddress.DataBindings.Add(new Binding("Text", _employeeInfo, "Address"));
             dtpBirthday.DataBindings.Add(new Binding("Value", _employeeInfo, "Birthday"));
             dtpJobDate.DataBindings.Add(new Binding("Value", _employeeInfo, "JobDate"));
-            picAvatar.DataBindings.Add(new Binding("Image", _employeeInfo, "Avatar"));
+            if(_employeeInfo.Avatar != null)
+            {
+                picAvatar.DataBindings.Add(new Binding("Image", _employeeInfo, "Avatar"));
+            }
             cbbDepart.DataBindings.Add(new Binding("SelectedValue", _employeeInfo, "DepartID"));
         }
         /// <summary>

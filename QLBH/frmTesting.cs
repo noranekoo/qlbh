@@ -56,10 +56,10 @@ namespace QLBH
 
         private void DgvData_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
-            if (e.RowIndex > dt1.Rows.Count - 1) return;
-            int id = int.Parse(dt1.Rows[e.RowIndex]["MaTb2"].ToString());
-            string str = dt2.Select($"MaTb2={id}")[0]["TenTb"].ToString();
-            dt1.Rows[e.RowIndex]["TenTb2"] = str;
+            //if (e.RowIndex > dt1.Rows.Count - 1) return;
+            //int id = int.Parse(dt1.Rows[e.RowIndex]["MaTb2"].ToString());
+            //string str = dt2.Select($"MaTb2={id}")[0]["TenTb"].ToString();
+            //dt1.Rows[e.RowIndex]["TenTb2"] = str;
             //dgvData.Rows[e.RowIndex].Cells[].Value = str;
         }
 

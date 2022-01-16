@@ -22,8 +22,8 @@ namespace QLBH.Pages.Goods
         {
             GetData();
             dgvData.CellValueChanged += DgvData_CellValueChanged;
-            dgvData.RowValidated
-                += DgvData_RowValidated;
+            //dgvData.RowValidated
+            //    += DgvData_RowValidated;
             dgvData.RowPrePaint += DgvData_RowPrePaint;
             dgvData.CellValidating += DgvData_CellValidating;
             dgvData.EditingControlShowing += DgvData_EditingControlShowing;
@@ -42,7 +42,7 @@ namespace QLBH.Pages.Goods
 
         private void DgvData_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
         {
-            int id = string.IsNullOrEmpty(dgvData.Rows[e.RowIndex].Cells[1].Value.ToString()) ? 0 : int.Parse(dgvData.Rows[e.RowIndex].Cells[1].Value.ToString());
+            //int id = string.IsNullOrEmpty(dgvData.Rows[e.RowIndex].Cells[1].Value.ToString()) ? 0 : int.Parse(dgvData.Rows[e.RowIndex].Cells[1].Value.ToString());
             string name = e.FormattedValue.ToString();
             //if (string.IsNullOrEmpty(name))
             //{
@@ -73,7 +73,7 @@ namespace QLBH.Pages.Goods
             {
                 dgvData.Rows[e.RowIndex].Cells[0].Value = e.RowIndex + 1;
             }
-            ChangeColor();
+//            ChangeColor();
         }
             
 
@@ -111,14 +111,6 @@ namespace QLBH.Pages.Goods
                 {
                     dtShow = dtFull.Copy();
                     dgvData.DataSource = dtShow;
-                    DataGridViewTextBoxColumn dgvtb = new DataGridViewTextBoxColumn
-                    {
-                        HeaderText = "STT",
-                        Name = "STT",
-                        Width = 30,
-                        ReadOnly = true
-                    };
-                    dgvData.Columns.Insert(0, dgvtb);
                 }
             }
             catch (Exception ex)
@@ -146,12 +138,6 @@ namespace QLBH.Pages.Goods
             //SetControlState(toolBars, mode);
         }
 
-        private void DgvData_RowValidated(object sender, DataGridViewCellEventArgs e)
-        {
-            ChangeColor();
-        }
-
-        
         private void DgvData_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             if(e.RowIndex > -1)
@@ -161,30 +147,34 @@ namespace QLBH.Pages.Goods
             }
             
         }
-
-        void ChangeColor()
-        {
-            int index = 0;
-            foreach(DataRow dr in dtShow.Rows)
-            {
-                switch (dr.RowState)
-                {
-                    case DataRowState.Added:
-                        dgvData.Rows[index].DefaultCellStyle.BackColor = Color.Green;
-                        dgvData.Rows[index].DefaultCellStyle.ForeColor = Color.White;
-                        break;
-                    case DataRowState.Modified:
-                        dgvData.Rows[index].DefaultCellStyle.BackColor = Color.Blue;
-                        dgvData.Rows[index].DefaultCellStyle.ForeColor = Color.White;
-                        break;
-                    default:
-                        dgvData.Rows[index].DefaultCellStyle.BackColor = Color.FromKnownColor(KnownColor.Window);
-                        dgvData.Rows[index].DefaultCellStyle.ForeColor = Color.Black;
-                        break;
-                }
-                index++;
-            }
-        }
+        /// <summary>
+        /// 影響試験
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //void ChangeColor()
+        //{
+        //    int index = 0;
+        //    foreach(DataRow dr in dtShow.Rows)
+        //    {
+        //        switch (dr.RowState)
+        //        {
+        //            case DataRowState.Added:
+        //                dgvData.Rows[index].DefaultCellStyle.BackColor = Color.Green;
+        //                dgvData.Rows[index].DefaultCellStyle.ForeColor = Color.White;
+        //                break;
+        //            case DataRowState.Modified:
+        //                dgvData.Rows[index].DefaultCellStyle.BackColor = Color.Blue;
+        //                dgvData.Rows[index].DefaultCellStyle.ForeColor = Color.White;
+        //                break;
+        //            default:
+        //                dgvData.Rows[index].DefaultCellStyle.BackColor = Color.FromKnownColor(KnownColor.Window);
+        //                dgvData.Rows[index].DefaultCellStyle.ForeColor = Color.Black;
+        //                break;
+        //        }
+        //        index++;
+        //    }
+        //}
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -228,14 +218,14 @@ namespace QLBH.Pages.Goods
                 }
             }
         }
-
-        private void DgvData_KeyUp(object sender, KeyEventArgs e)
-        {
-            if(e.KeyData == Keys.Delete)
-            {
-                BtnDelete_Click(sender, e);
-            }
-        }
+        //影響試験
+        //private void DgvData_KeyUp(object sender, KeyEventArgs e)
+        //{
+        //    if(e.KeyData == Keys.Delete)
+        //    {
+        //        BtnDelete_Click(sender, e);
+        //    }
+        //}
 
         private void BtnReset_Click(object sender, EventArgs e)
         {

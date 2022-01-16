@@ -19,7 +19,6 @@ namespace QLBH.Pages.Goods
         public frmUnit()
         {
             InitializeComponent();
-            Init();
             LoadData();
             dgvData.CellClick += DgvData_CellClick;
             dgvData.RowPrePaint += DgvData_RowPrePaint;
@@ -34,15 +33,7 @@ namespace QLBH.Pages.Goods
             ChangeColor();
         }
 
-        void Init()
-        {
-            DataGridViewTextBoxColumn dgvtb = new DataGridViewTextBoxColumn();
-            dgvtb.Name = "Number";
-            dgvtb.HeaderText = "STT";
-            dgvtb.Width = 30;
-            dgvData.Columns.Insert(0,dgvtb);
-        }
-
+       
         private void DgvData_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             currentRow = e.RowIndex;
