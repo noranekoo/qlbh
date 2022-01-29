@@ -15,18 +15,18 @@ namespace BUS
         {
 
         }
-        public static List<Goods> GetData()
-        {
-            try
-            {
-                return GoodsDAL.GetData();
-            }
-            catch (Exception e)
-            {
-                return null;
-                throw e.InnerException;
-            }
+        //public static List<Goods> GetData()
+        //{
+        //    try
+        //    {
+        //        return GoodsDAL.Instance.GetProductList();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return null;
+        //        throw e.InnerException;
+        //    }
             
-        }
+        //}
     }
 }

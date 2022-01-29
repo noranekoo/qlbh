@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using DAL;
+using DTO;
 using QLBH.Resources;
 
 namespace QLBH
@@ -22,14 +24,30 @@ namespace QLBH
         private void btnSave_Click(object sender, EventArgs e)
         {
             string pwd = FormHandler.UserInfo.Info.Password;
-            if (pwd.Equals(txtOldPassword.Text))
+            if (!pwd.Equals(txtOldPassword.Text))
             {
-
-                return;
+                MessageBox.
+                    Show("Mật khẩu cũ không đúng");
             }
-            if (!txtNewPassword.Text.Equals(txtRNewPassword.Text))
+            else
             {
-                MessageBox.Show(Const.GetMessageByCode("SET01"));
+                if (!txtRNewPassword.Text.Equals(txtNewPassword.Text))
+                {
+                    MessageBox.Show("Mật khẩu xác nhận khớp với mật khẩu cũ");
+                }
+                else
+                {
+                    UserInfo info = UserDAL.Instance.ChangePassword(FormHandler.UserInfo, txtNewPassword.Text);
+                    if(info != null)
+                    {
+                        FormHandler.UserInfo = info;
+                        MessageBox.Show("Mật khẩu đã được thay đổi!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đổi mật khẩu thất bại.");
+                    }
+                }
             }
         }
     }

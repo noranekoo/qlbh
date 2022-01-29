@@ -23,9 +23,9 @@ namespace QLBH
         public frmLogin()
         {
             FormHandler.frmLogin = this;
-            _user = $"{SystemInformation.UserDomainName}\\{SystemInformation.UserName}";
+            _user = $"{SystemInformation.UserDomainName}-{SystemInformation.UserName}";
             InitializeComponent();
-            lblUser.Text = _user;
+            lblUser.Text = _user.Replace("-","\\");
 
         }
 
@@ -48,12 +48,9 @@ namespace QLBH
             {
                 if (UserBUS.IsExistUser(user))
                 {
-                    Hide();
+                    DialogResult = DialogResult.OK;
                     FormHandler.UserInfo = UserBUS.GetUser(user);
                     FormHandler.UserInfo.FullName = !string.IsNullOrEmpty(FormHandler.UserInfo.FullName) ? FormHandler.UserInfo.FullName : SystemInformation.UserName;
-                    frmMain main = new frmMain();
-                    main.Show();
-                    txtPassword.Clear();
                     //Bắt đầu 2021_12_15 - Xử lý khi chọn Lưu đăng nhập - Thi
                     if (ckbSaveSession.Checked)
                     {
@@ -68,6 +65,7 @@ namespace QLBH
                 else
                 {
                     MessageBox.Show("Mật khẩu không đúng. Vui lòng nhập lại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    //DialogResult = DialogResult.No;
                 }
             }
             catch (Exception ex)
@@ -112,7 +110,8 @@ namespace QLBH
 
         private void ckbSaveSession_CheckedChanged(object sender, EventArgs e)
         {
-           
+            //FormHandler.ShowErrorMessage("Chức năng chưa hoàn thiện!");
+            ckbSaveSession.Checked = false;
         }
 
         private void frmLogin_Load(object sender, EventArgs e)

@@ -20,7 +20,6 @@ E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.frmSettings.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.frmCelebration.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.frmCooperation.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.frmGeneral.resources
-E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.frmGoods.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.frmGoodsIE.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.frmReport.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.frmBackupData.resources
@@ -71,3 +70,8 @@ E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.Cooperation.frmCustomer.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.frmMain2.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.Goods.frmImportGoods.resources
 E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.Cooperation.frmSupplier.resources
+E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.Goods.frmExportGoods.resources
+E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.Goods.frmGoods.resources
+E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.Goods.frmDebit.resources
+E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.Goods.frmBill.resources
+E:\DEVDIR\C#\QLBH\QLBH\obj\Debug\QLBH.Pages.Goods.frmProductType.resources

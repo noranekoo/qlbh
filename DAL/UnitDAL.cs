@@ -14,7 +14,7 @@ namespace DAL
         /// <summary>
         /// Khởi tạo một lần
         /// </summary>
-        public readonly static UnitDAL Instance = new UnitDAL();
+        public static UnitDAL Instance { get; set; } = new UnitDAL();
         
         public DataTable GetUnitList()
         {

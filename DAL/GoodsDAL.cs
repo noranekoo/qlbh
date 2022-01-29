@@ -17,47 +17,63 @@ namespace DAL
 
         }
 
-        public static List<Goods> GetData()
+        public static GoodsDAL Instance { get; set; } = new GoodsDAL();
+
+        public DataTable GetProductList()
         {
+            OleDbParameter[] pa = new OleDbParameter[0];
             try
             {
-                List<Goods> list = new List<Goods>();
-                OleDbParameter[] param = new OleDbParameter[0];
-                DataTable dt = DataProvider.Instance.SelectData("HangHoa", param, "*");
-                foreach(DataRow dr in dt.Rows)
-                {
-                    list.Add(ConvertToDTO(dr));
-                }
-                return list;
+                return DataProvider.Instance.SelectData("HangHoa", pa, "*");
             }
             catch (Exception e)
             {
                 return null;
-                throw e.InnerException;
-            }   
+                throw e;
+            }
         }
+
+        //public static List<Goods> GetData()
+        //{
+        //    try
+        //    {
+        //        List<Goods> list = new List<Goods>();
+        //        OleDbParameter[] param = new OleDbParameter[0];
+        //        DataTable dt = DataProvider.Instance.SelectData("HangHoa", param, "*");
+        //        foreach(DataRow dr in dt.Rows)
+        //        {
+        //            list.Add(ConvertToDTO(dr));
+        //        }
+        //        return list;
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return null;
+        //        throw e.InnerException;
+        //    }   
+        //}
        
 
-        private static Goods ConvertToDTO(DataRow dr)
+        private static Product ConvertToDTO(DataRow dr)
         {
             Brand brand = BrandDAL.GetBrand(int.Parse(dr["Hang"].ToString()));
             Supplier supplier = SupplierDAL.Instance.GetSupplier(int.Parse(dr["NhaCungCap"].ToString()));
             GoodsType type = GoodsTypeDAL.GetGoodsType(int.Parse(dr["Nhom"].ToString()));
             Unit unit = UnitDAL.Instance.GetUnit(int.Parse(dr["DonViTinh"].ToString()));
-            return new Goods()
+            return new Product()
             {
-                Goods_id = dr["MaHang"].ToString(),
-                Goods_name = dr["TenHang"].ToString(),
-                Brand_id = brand.BrandId,
-                Brand_name = brand.BrandName,
-                Supplier_id = supplier.SupplierID,
-                Supplier_name = supplier.SupplierName,
-                Goods_price_buy = dr["DonGiaMua"].ToString(),
-                Goods_price_sell = dr["DonGiaBan"].ToString(),
-                Goods_type_Id = type.GoodsTypeID,
-                Goods_type_nm = type.GoodsTypeName,
-                Unit_id = unit.Id,
-                Unit_name = unit.Unit_name 
+                GoodsID = dr["MaHang"].ToString(),
+                GoodsName = dr["TenHang"].ToString(),
+                BrandID = brand.BrandId,
+                BrandName = brand.BrandName,
+                SupplierID = supplier.SupplierID,
+                SupplierName = supplier.SupplierName,
+                PriceBuy = decimal.Parse(dr["DonGiaMua"].ToString()),
+                PriceSell = decimal.Parse(dr["DonGiaBan"].ToString()),
+                GoodsTypeID = type.GoodsTypeID,
+                TypeName = type.GoodsTypeName,
+                UnitID = unit.Id,
+                UnitName = unit.Unit_name 
             };
         }
 

@@ -87,7 +87,7 @@ namespace QLBH.Pages.Celebration
                     Size = new Size(323, 306),
                     BorderStyle = BorderStyle.FixedSingle,
                     Location = new Point(oldEmp.Width + oldEmp.Location.X + 6, oldEmp.Location.Y),
-                    EmployeeInfo = Employee.ConvertToDTO(dr)
+                    EmployeeInfo = Employee.ConvertToObj(dr)
                 };
                 emp.DetailClick += Emp_DetailClick;
                 emp.UpdateClick += Emp_UpdateClick;
@@ -106,12 +106,11 @@ namespace QLBH.Pages.Celebration
             EmployeeDetail emp = sender as EmployeeDetail;
             frmEmpUpdate frm = new frmEmpUpdate(emp.EmployeeInfo, dtShow);
             DialogResult result = frm.ShowDialog(this);
-            if(result == DialogResult.OK)
+            if (result == DialogResult.OK || result == DialogResult.No)
             {
-                dtFull = EmployeeDAL.Instance.GetEmployeeList();
-                DrawList();
-                //InitLoad
+                InitLoad(true);
             }
+            
             else
             {
                 DrawList();

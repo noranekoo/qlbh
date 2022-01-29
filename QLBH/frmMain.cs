@@ -1,5 +1,6 @@
 ﻿using DAL;
 using QLBH.Pages;
+using QLBH.Pages.Goods;
 using QLBH.Resources;
 using System;
 using System.Collections.Generic;

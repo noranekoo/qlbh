@@ -142,5 +142,23 @@ namespace QLBH.Pages.Celebration.Employees
         {
 
         }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn xoá người này?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if(result == DialogResult.Yes)
+            {
+                if (EmployeeDAL.Instance.Delete(_employeeInfo) != -1)
+                {
+                    MessageBox.Show("Nhân viên này đã bị xoá!");
+                }
+                else
+                {
+                    MessageBox.Show("Có lỗi khi thực hiện thao tác");
+                }
+                DialogResult = DialogResult.No;
+            }
+            
+        }
     }
 }

@@ -212,5 +212,29 @@ namespace DAL
             }
             return false;
         }
+
+        public UserInfo ChangePassword(UserInfo info, string password)
+        {
+            UserInfo infos = null;
+            string pwd = Encrypto.SHAHash(password);
+            OleDbParameter[] pa = new OleDbParameter[1]
+            {
+                new OleDbParameter("user", info.Info.UserName),
+            };
+            try
+            {
+                DataTable dt = DataProvider.Instance.SelectData("NguoiDung", pa, "*", "TenDangNhap=@user");
+                DataRow dr = dt.Rows[0];
+                dr["MatKhau"] = pwd;
+                DataProvider.Instance.UpdateData("NguoiDung",dt, "*");
+                infos = info;
+                infos.Info.Password = pwd;
+            }
+            catch(Exception e)
+            {
+                return infos;
+            }
+            return infos;
+        }
     }
 }

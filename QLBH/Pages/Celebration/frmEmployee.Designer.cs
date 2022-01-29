@@ -87,7 +87,7 @@
             // btnDepart
             // 
             this.btnDepart.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.btnDepart.FlatAppearance.BorderSize = 0;
+            this.btnDepart.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.btnDepart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDepart.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.btnDepart.Image = global::QLBH.Properties.Resources.department;
@@ -148,7 +148,7 @@
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;

@@ -106,7 +106,7 @@ namespace QLBH.Pages.Goods
         {
             try
             {
-                dtFull = BrandDAL.GetBrandList();
+                dtFull = BrandDAL.Instance.GetBrandList();
                 if (dtFull != null)
                 {
                     dtShow = dtFull.Copy();
@@ -182,7 +182,7 @@ namespace QLBH.Pages.Goods
             {
                 BrandDAL.UpdateData("Hang", dtShow);
                 MessageBox.Show("Cập nhật dữ liệu thành công");
-                dtFull = BrandDAL.GetBrandList();
+                dtFull = BrandDAL.Instance.GetBrandList();
             }
             catch(Exception ex)
             {

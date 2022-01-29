@@ -39,7 +39,7 @@ namespace DTO
             Avatar = GetAvatar(AvatarLink);
         }
 
-        public static Employee ConvertToDTO(DataRow dr)
+        public static Employee ConvertToObj(DataRow dr)
         {
             string avatarLink = dr["AnhDaiDien"].ToString();
             return new Employee()

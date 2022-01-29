@@ -77,6 +77,7 @@
             this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtName
             // 
@@ -84,6 +85,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(200, 27);
             this.txtName.TabIndex = 1;
+            this.txtName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyUp);
             // 
             // label1
             // 
@@ -100,14 +102,15 @@
             this.btnSelect.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.btnSelect.ForeColor = System.Drawing.Color.Cornsilk;
             this.btnSelect.Image = global::QLBH.Properties.Resources.selection;
-            this.btnSelect.Location = new System.Drawing.Point(660, 365);
+            this.btnSelect.Location = new System.Drawing.Point(658, 368);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(89, 36);
+            this.btnSelect.Size = new System.Drawing.Size(91, 36);
             this.btnSelect.TabIndex = 10;
             this.btnSelect.Text = "OK";
             this.btnSelect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSelect.UseVisualStyleBackColor = false;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
             // 
             // btnSave
             // 
@@ -115,7 +118,7 @@
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.btnSave.ForeColor = System.Drawing.Color.Cornsilk;
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(755, 365);
+            this.btnSave.Location = new System.Drawing.Point(755, 368);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(95, 36);
             this.btnSave.TabIndex = 8;
@@ -123,6 +126,7 @@
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnReset
             // 
@@ -178,6 +182,7 @@
             this.dgvData.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvData.Size = new System.Drawing.Size(831, 276);
             this.dgvData.TabIndex = 7;
+            this.dgvData.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvData_CellDoubleClick);
             // 
             // ID
             // 
@@ -238,6 +243,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "frmCustomer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Quản lý khách hàng";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
