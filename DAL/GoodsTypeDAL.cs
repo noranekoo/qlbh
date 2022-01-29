@@ -11,7 +11,23 @@ namespace DAL
 {
     public class GoodsTypeDAL
     {
-        public static List<GoodsType> GetGoodsTypeList()
+        public static GoodsTypeDAL Instance { get; set; } = new GoodsTypeDAL();
+
+        public DataTable GetGoodsTypeList()
+        {
+            OleDbParameter[] pa = new OleDbParameter[0];
+            try
+            {
+                return DataProvider.Instance.SelectData("NhomHang", pa, "*");
+            }
+            catch (Exception e)
+            {
+                return null;
+                throw e;
+            }
+        }
+
+        public static List<GoodsType> GetGoodsTypes()
         {
             try
             {

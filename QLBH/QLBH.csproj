@@ -171,7 +171,6 @@
       <DependentUpon>PhieuXuat.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="Database\DataSet1.cs">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
@@ -276,10 +275,22 @@
     <Compile Include="frmSettings.Designer.cs">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pages\frmGoods.cs">
+    <Compile Include="Pages\Goods\frmDebit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pages\frmGoods.Designer.cs">
+    <Compile Include="Pages\Goods\frmDebit.Designer.cs">
+      <DependentUpon>frmDebit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Goods\frmBill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Goods\frmBill.Designer.cs">
+      <DependentUpon>frmBill.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Goods\frmGoods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Goods\frmGoods.Designer.cs">
       <DependentUpon>frmGoods.cs</DependentUpon>
     </Compile>
     <Compile Include="Pages\frmGoodsIE.cs">
@@ -324,6 +335,12 @@
     <Compile Include="Pages\Goods\frmImportGoods.Designer.cs">
       <DependentUpon>frmImportGoods.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Goods\frmProductType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pages\Goods\frmProductType.Designer.cs">
+      <DependentUpon>frmProductType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Goods\frmUnit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,12 +375,18 @@
     <Compile Include="Resources\ExplainArea.Designer.cs">
       <DependentUpon>ExplainArea.cs</DependentUpon>
     </Compile>
+    <Compile Include="Resources\FormCustom.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Resources\FormHandler.cs" />
     <Compile Include="Reports\PhieuXuat.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PhieuXuat.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Resources\MdiFormCustom.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Resources\QLBHLogger.cs" />
     <Compile Include="Resources\TabButtonCustom.cs">
@@ -440,7 +463,13 @@
     <EmbeddedResource Include="frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pages\frmGoods.resx">
+    <EmbeddedResource Include="Pages\Goods\frmDebit.resx">
+      <DependentUpon>frmDebit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Goods\frmBill.resx">
+      <DependentUpon>frmBill.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Goods\frmGoods.resx">
       <DependentUpon>frmGoods.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\frmGoodsIE.resx">
@@ -458,8 +487,14 @@
     <EmbeddedResource Include="Pages\Goods\frmBrand.resx">
       <DependentUpon>frmBrand.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Goods\frmExportGoods.resx">
+      <DependentUpon>frmExportGoods.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pages\Goods\frmImportGoods.resx">
       <DependentUpon>frmImportGoods.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Goods\frmProductType.resx">
+      <DependentUpon>frmProductType.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pages\Goods\frmUnit.resx">
       <DependentUpon>frmUnit.cs</DependentUpon>
@@ -578,6 +613,9 @@
     <None Include="bin\Debug\images\import.png" />
     <None Include="bin\Debug\images\data.png" />
     <None Include="bin\Debug\images\business.png" />
+    <None Include="bin\Debug\images\debit.png" />
+    <None Include="bin\Debug\images\blogger.png" />
+    <None Include="bin\Debug\images\printer.png" />
     <Content Include="qlbh_icon.ico" />
   </ItemGroup>
   <ItemGroup>

@@ -28,22 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSupplier));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSupplier));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvData = new QLBH.Resources.DataGridViewCustom();
-            this.brandBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnSelect = new System.Windows.Forms.Button();
-            this.btnReset = new QLBH.Resources.ButtonCustom();
             this.btnSave = new System.Windows.Forms.Button();
+            this.dgvData = new QLBH.Resources.DataGridViewCustom();
+            this.SupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SupplierName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnReset = new QLBH.Resources.ButtonCustom();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brandBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -71,6 +73,7 @@
             this.btnSearch.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSearch.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtName
             // 
@@ -78,6 +81,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(200, 27);
             this.txtName.TabIndex = 1;
+            this.txtName.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtName_KeyUp);
             // 
             // label1
             // 
@@ -87,6 +91,38 @@
             this.label1.Size = new System.Drawing.Size(98, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nhập dữ liệu:";
+            // 
+            // btnSelect
+            // 
+            this.btnSelect.BackColor = System.Drawing.Color.DarkOrange;
+            this.btnSelect.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnSelect.ForeColor = System.Drawing.Color.Cornsilk;
+            this.btnSelect.Image = global::QLBH.Properties.Resources.selection;
+            this.btnSelect.Location = new System.Drawing.Point(557, 365);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(89, 36);
+            this.btnSelect.TabIndex = 15;
+            this.btnSelect.Text = "OK";
+            this.btnSelect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSelect.UseVisualStyleBackColor = false;
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.BackColor = System.Drawing.Color.DarkBlue;
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnSave.ForeColor = System.Drawing.Color.Cornsilk;
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.Location = new System.Drawing.Point(652, 365);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(95, 36);
+            this.btnSave.TabIndex = 13;
+            this.btnSave.Text = "Lưu";
+            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSave.UseVisualStyleBackColor = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // dgvData
             // 
@@ -99,6 +135,12 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvData.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvData.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SupplierID,
+            this.SupplierName,
+            this.Address,
+            this.Phone,
+            this.Email});
             this.dgvData.GridColor = System.Drawing.Color.SandyBrown;
             this.dgvData.Location = new System.Drawing.Point(17, 86);
             this.dgvData.MultiSelect = false;
@@ -116,20 +158,41 @@
             this.dgvData.Size = new System.Drawing.Size(730, 276);
             this.dgvData.TabIndex = 12;
             // 
-            // btnSelect
+            // SupplierID
             // 
-            this.btnSelect.BackColor = System.Drawing.Color.DarkOrange;
-            this.btnSelect.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btnSelect.ForeColor = System.Drawing.Color.Cornsilk;
-            this.btnSelect.Image = global::QLBH.Properties.Resources.selection;
-            this.btnSelect.Location = new System.Drawing.Point(557, 365);
-            this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(89, 36);
-            this.btnSelect.TabIndex = 15;
-            this.btnSelect.Text = "OK";
-            this.btnSelect.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSelect.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSelect.UseVisualStyleBackColor = false;
+            this.SupplierID.DataPropertyName = "ID";
+            this.SupplierID.HeaderText = "NCCID";
+            this.SupplierID.Name = "SupplierID";
+            this.SupplierID.Visible = false;
+            this.SupplierID.Width = 59;
+            // 
+            // SupplierName
+            // 
+            this.SupplierName.DataPropertyName = "TenNCC";
+            this.SupplierName.HeaderText = "Tên nhà cung cấp";
+            this.SupplierName.Name = "SupplierName";
+            this.SupplierName.Width = 118;
+            // 
+            // Address
+            // 
+            this.Address.DataPropertyName = "DiaChi";
+            this.Address.HeaderText = "Địa chỉ";
+            this.Address.Name = "Address";
+            this.Address.Width = 61;
+            // 
+            // Phone
+            // 
+            this.Phone.DataPropertyName = "SDT";
+            this.Phone.HeaderText = "SĐT";
+            this.Phone.Name = "Phone";
+            this.Phone.Width = 65;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
+            this.Email.Width = 75;
             // 
             // btnReset
             // 
@@ -152,21 +215,6 @@
             this.btnReset.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnReset.UseVisualStyleBackColor = false;
             // 
-            // btnSave
-            // 
-            this.btnSave.BackColor = System.Drawing.Color.DarkBlue;
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btnSave.ForeColor = System.Drawing.Color.Cornsilk;
-            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(652, 365);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(95, 36);
-            this.btnSave.TabIndex = 13;
-            this.btnSave.Text = "Lưu";
-            this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSave.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSave.UseVisualStyleBackColor = false;
-            // 
             // frmSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -183,11 +231,11 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "frmSupplier";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "QUẢN LÝ NHÀ CUNG CẤP";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvData)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brandBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -199,9 +247,13 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
         private Resources.DataGridViewCustom dgvData;
-        private System.Windows.Forms.BindingSource brandBindingSource;
         private System.Windows.Forms.Button btnSelect;
         private Resources.ButtonCustom btnReset;
         private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Address;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
     }
 }

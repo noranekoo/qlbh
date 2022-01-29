@@ -19,7 +19,7 @@ namespace QLBH.Pages
         const string DEFAULT_PATH = "Reports\\";
         DataTable dt;
         //public string FileName { get; set; }
-        public frmReportViewer(string fileName, DataTable dt)
+        public frmReportViewer(string fileName, DataSet ds)
         {
             InitializeComponent();
             string fName = DEFAULT_PATH+fileName;
@@ -29,7 +29,7 @@ namespace QLBH.Pages
                 {
                     ReportDocument report = new ReportDocument();
                     report.Load(fName);
-                    report.SetDataSource(dt);
+                    report.SetDataSource(ds);
                     crystalReportViewer1.ReportSource = report;
                     crystalReportViewer1.RefreshReport();
                     crystalReportViewer1.Refresh();

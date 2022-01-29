@@ -10,9 +10,9 @@ namespace DAL
 {
     public class BrandDAL
     {
-        public readonly static BrandDAL Instance = new BrandDAL();
+        public static BrandDAL Instance { get; set; } = new BrandDAL();
         
-        public static DataTable 
+        public DataTable 
             GetBrandList()
         {
             OleDbParameter[] parameters = new OleDbParameter[0];

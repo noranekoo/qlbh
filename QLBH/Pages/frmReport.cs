@@ -33,9 +33,9 @@ namespace QLBH.Pages
             dt = DataProvider.Instance.SelectData("PhieuXuat", new System.Data.OleDb.OleDbParameter[0], "*");
             //Dataset2 ds = new Dataset2();
             
-            frmReportViewer viewer = new frmReportViewer("PhieuXuat.rpt", dt);
+            //frmReportViewer viewer = new frmReportViewer("PhieuXuat.rpt", dt);
 
-            viewer.Show();
+            //viewer.Show();
         }
     }
 }

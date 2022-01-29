@@ -51,6 +51,7 @@
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label8 = new System.Windows.Forms.Label();
             this.cbbDepart = new System.Windows.Forms.ComboBox();
+            this.btnRemove = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -237,11 +238,29 @@
             this.cbbDepart.TabIndex = 11;
             this.cbbDepart.SelectedIndexChanged += new System.EventHandler(this.cbbDepart_SelectedIndexChanged);
             // 
+            // btnRemove
+            // 
+            this.btnRemove.BackColor = System.Drawing.Color.Red;
+            this.btnRemove.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemove.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnRemove.ForeColor = System.Drawing.Color.Snow;
+            this.btnRemove.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRemove.Location = new System.Drawing.Point(347, 318);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(52, 32);
+            this.btnRemove.TabIndex = 12;
+            this.btnRemove.Text = "Xoá";
+            this.btnRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnRemove.UseVisualStyleBackColor = false;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
             // frmEmpUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(590, 364);
+            this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.cbbDepart);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.dtpJobDate);
@@ -300,5 +319,6 @@
         private System.Windows.Forms.BindingSource employeeBindingSource;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox cbbDepart;
+        private System.Windows.Forms.Button btnRemove;
     }
 }

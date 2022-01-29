@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BillDAL.cs" />
     <Compile Include="BrandDAL.cs" />
     <Compile Include="Celebration\DepartDAL.cs" />
     <Compile Include="CustomerDAL.cs" />

@@ -9,8 +9,19 @@ namespace QLBH.Resources
 {
     public class QLBHLogger
     {
+        /// <summary>
+        /// 
+        /// </summary>
         const string ERROR_LOG_FILE_PATH = "error.log";
+        /// <summary>
+        /// 
+        /// </summary>
         const string UPDATE_LOG_FILE_PATH = "update.log";
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
         public static void LogError(string message)
         {
             DateTime now = DateTime.Now;
@@ -20,6 +31,10 @@ namespace QLBH.Resources
             File.WriteAllBytes(ERROR_LOG_FILE_PATH, strByte);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="except"></param>
         public static void LogError(Exception except)
         {
             DateTime now = DateTime.Now;

@@ -88,9 +88,21 @@ namespace DAL
         /// <param name="tbName"></param>
         /// <param name="pa"></param>
         /// <param name="cols"></param>
-        public void Update(string tbName, OleDbParameter[] pa, string cols, string values)
+        public int Update(string tbName, OleDbParameter[] pa, string updateStr, string whereStr = "1=1")
         {
-            
+            string sql = JoinSQL(Const.UPDATE, tbName, updateStr, whereStr);
+            try
+            {
+                OleDbCommand cmd = new OleDbCommand(sql, odbConnect);
+                cmd.Parameters.AddRange(pa);
+                int r = cmd.ExecuteNonQuery();
+                return r;
+            }
+            catch(Exception e)
+            {
+                //trans.Rollback();
+            }
+            return -1;
         }
 
         /// <summary>

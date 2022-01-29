@@ -41,5 +41,26 @@ namespace DAL
                 throw e;
             }
         }
+
+        public int Delete(Employee info)
+        {
+            OleDbParameter[] pa = new OleDbParameter[1]
+            {
+                new OleDbParameter("id", info.ID)
+            };
+            try
+            {
+                DataTable dt = DataProvider.Instance.SelectData("NhanVien", pa, "*", "MaNV=@id");
+                DataRow dr = dt.Rows[0];
+                dr.Delete();
+                DataProvider.Instance.UpdateData("NhanVien", dt, "*");
+                return 1;
+            }
+            catch (Exception e)
+            {
+                return -1;
+                throw e;
+            }
+        }
     }
 }
